@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'Communication_Example' do
+  pod 'Communication', :path => '../'
+
+  target 'Communication_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
