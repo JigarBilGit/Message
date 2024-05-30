@@ -1,0 +1,6 @@
+framework module Communication {
+  umbrella header "Communication-umbrella.h"
+
+  export *
+  module * { export * }
+}

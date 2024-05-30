@@ -1,0 +1,16 @@
+PODS:
+  - Communication (0.1.0)
+
+DEPENDENCIES:
+  - Communication (from `../`)
+
+EXTERNAL SOURCES:
+  Communication:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Communication: fd8950d2eb2832ea7c5c9bb7728a7428fed5fcf0
+
+PODFILE CHECKSUM: 063646fe82a5acaa5f856ecd4f6aa5e7aabd0f29
+
+COCOAPODS: 1.15.2

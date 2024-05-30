@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionHeaderCell" customModule="BilliyoClinicalPDN" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="rH6-m2-i0r" userLabel="MessageHeaderCell" customClass="MessageHeaderCell" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPP-GF-PMy" customClass="IPView" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lj-bY-rsM" customClass="DesignableView" customModule="Spring">
+                            <rect key="frame" x="190" y="8" width="34.5" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" tag="3514" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GyQ-RD-poF" customClass="BMLabel" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                    <rect key="frame" x="15" y="5" width="4.5" height="30"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                    <color key="textColor" name="black"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="white"/>
+                            <constraints>
+                                <constraint firstItem="GyQ-RD-poF" firstAttribute="top" secondItem="9lj-bY-rsM" secondAttribute="top" constant="5" id="Agm-2a-JfS"/>
+                                <constraint firstAttribute="bottom" secondItem="GyQ-RD-poF" secondAttribute="bottom" constant="5" id="FjU-cZ-HQT"/>
+                                <constraint firstItem="GyQ-RD-poF" firstAttribute="leading" secondItem="9lj-bY-rsM" secondAttribute="leading" constant="15" id="X91-Qd-6mz"/>
+                                <constraint firstAttribute="trailing" secondItem="GyQ-RD-poF" secondAttribute="trailing" constant="15" id="lif-Fd-sMc"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="9lj-bY-rsM" firstAttribute="top" secondItem="pPP-GF-PMy" secondAttribute="top" constant="8" id="DPc-Cl-pl6"/>
+                        <constraint firstItem="9lj-bY-rsM" firstAttribute="width" relation="lessThanOrEqual" secondItem="pPP-GF-PMy" secondAttribute="width" multiplier="0.45" id="c77-b5-J9n"/>
+                        <constraint firstItem="9lj-bY-rsM" firstAttribute="centerX" secondItem="pPP-GF-PMy" secondAttribute="centerX" id="gGo-B4-Abm"/>
+                        <constraint firstAttribute="bottom" secondItem="9lj-bY-rsM" secondAttribute="bottom" constant="8" id="jac-Hd-CWJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="pPP-GF-PMy" firstAttribute="leading" secondItem="rH6-m2-i0r" secondAttribute="leading" id="8Nf-AS-QYO"/>
+                <constraint firstAttribute="bottom" secondItem="pPP-GF-PMy" secondAttribute="bottom" id="Q1J-37-Zch"/>
+                <constraint firstAttribute="trailing" secondItem="pPP-GF-PMy" secondAttribute="trailing" id="ScJ-O9-woS"/>
+                <constraint firstItem="pPP-GF-PMy" firstAttribute="top" secondItem="rH6-m2-i0r" secondAttribute="top" id="ush-xN-hbt"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="lblTitle" destination="GyQ-RD-poF" id="cDa-fP-ilH"/>
+                <outlet property="viewMessageBG" destination="9lj-bY-rsM" id="JrN-s9-X1k"/>
+            </connections>
+            <point key="canvasLocation" x="-384.375" y="-233.45070422535213"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

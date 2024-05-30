@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OptionListCell" rowHeight="54.5" id="KGk-i7-Jjw" userLabel="OptionListCell" customClass="OptionListCell" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1e-K0-meQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1016" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8Q-Xf-kG8" customClass="IPLabel" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                <rect key="frame" x="14" y="15" width="257" height="25"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                <color key="textColor" name="black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgViewAccountInfo" translatesAutoresizingMaskIntoConstraints="NO" id="7GL-NW-Jfl">
+                                <rect key="frame" x="281" y="15" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="Umt-6l-PW0"/>
+                                    <constraint firstAttribute="width" secondItem="7GL-NW-Jfl" secondAttribute="height" multiplier="1:1" id="Zt6-gg-3mq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-Rv-IxK">
+                                <rect key="frame" x="14" y="55" width="292" height="1"/>
+                                <color key="backgroundColor" name="LightGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="yhu-vH-AQQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="white"/>
+                        <constraints>
+                            <constraint firstItem="MC6-Rv-IxK" firstAttribute="trailing" secondItem="7GL-NW-Jfl" secondAttribute="trailing" id="4Yl-gN-66c"/>
+                            <constraint firstAttribute="trailing" secondItem="7GL-NW-Jfl" secondAttribute="trailing" constant="14" id="4lc-I8-58p"/>
+                            <constraint firstItem="MC6-Rv-IxK" firstAttribute="leading" secondItem="p8Q-Xf-kG8" secondAttribute="leading" id="BkV-Hb-IVn"/>
+                            <constraint firstItem="p8Q-Xf-kG8" firstAttribute="leading" secondItem="x1e-K0-meQ" secondAttribute="leading" constant="14" id="Map-zo-sMd"/>
+                            <constraint firstItem="7GL-NW-Jfl" firstAttribute="leading" secondItem="p8Q-Xf-kG8" secondAttribute="trailing" constant="10" id="SPL-U2-6bp"/>
+                            <constraint firstItem="MC6-Rv-IxK" firstAttribute="top" secondItem="p8Q-Xf-kG8" secondAttribute="bottom" constant="15" id="fi4-PF-yYp"/>
+                            <constraint firstItem="p8Q-Xf-kG8" firstAttribute="centerY" secondItem="7GL-NW-Jfl" secondAttribute="centerY" id="l0W-GK-kxQ"/>
+                            <constraint firstItem="p8Q-Xf-kG8" firstAttribute="top" secondItem="x1e-K0-meQ" secondAttribute="top" constant="15" id="rUO-8q-ytq"/>
+                            <constraint firstAttribute="bottom" secondItem="MC6-Rv-IxK" secondAttribute="bottom" id="xVI-tq-dBz"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="x1e-K0-meQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2iQ-ar-riP"/>
+                    <constraint firstAttribute="bottom" secondItem="x1e-K0-meQ" secondAttribute="bottom" id="7sl-f2-9JT"/>
+                    <constraint firstItem="x1e-K0-meQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Pb9-V3-kA3"/>
+                    <constraint firstAttribute="trailing" secondItem="x1e-K0-meQ" secondAttribute="trailing" id="zys-AP-Zeu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgOption" destination="7GL-NW-Jfl" id="FU9-Fm-q5E"/>
+                <outlet property="lblOption" destination="p8Q-Xf-kG8" id="d1A-cC-yMl"/>
+                <outlet property="lblSeprator" destination="MC6-Rv-IxK" id="bVb-FI-Flb"/>
+                <outlet property="viewCellBg" destination="x1e-K0-meQ" id="YJz-dX-R49"/>
+            </connections>
+            <point key="canvasLocation" x="-66" y="75"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="imgViewAccountInfo" width="170" height="170"/>
+        <namedColor name="LightGray">
+            <color red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

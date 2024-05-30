@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditGroupInfoPopupVC" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+            <connections>
+                <outlet property="btnCancel" destination="NJs-jU-EB8" id="b25-9p-YLX"/>
+                <outlet property="btnEditGroupProfilePic" destination="rmZ-9e-kMt" id="gTF-hK-nzw"/>
+                <outlet property="btnOk" destination="RNm-qx-ISB" id="Ls4-J1-USe"/>
+                <outlet property="imgGroupProfilePic" destination="NVs-R1-cyv" id="sR0-fS-jGH"/>
+                <outlet property="lblEditProfile" destination="ptR-tF-9lm" id="erj-e2-Buv"/>
+                <outlet property="txtGroupName" destination="rWI-hR-Y4n" id="GbJ-LQ-rqW"/>
+                <outlet property="view" destination="NSi-jd-HD2" id="JrF-jl-1bq"/>
+                <outlet property="viewCenterBGWidth" destination="iar-lI-zOH" id="zEE-vF-WqV"/>
+                <outlet property="viewEditProfile" destination="TR8-oj-2Tp" id="VWh-fa-eGO"/>
+                <outlet property="viewGroupName" destination="Uwf-CJ-1ca" id="Ike-K5-QN4"/>
+                <outlet property="viewMainBG" destination="G73-BT-h5p" id="EJx-4v-jWb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="NSi-jd-HD2">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G73-BT-h5p">
+                    <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TR8-oj-2Tp">
+                            <rect key="frame" x="20" y="81.5" width="280" height="385"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Edit Profile" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptR-tF-9lm" customClass="BHLabel" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                    <rect key="frame" x="15" y="15" width="250" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="55R-6B-8M5"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                    <color key="textColor" name="PrimaryTheme"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgProfilePlaceholderBlur" translatesAutoresizingMaskIntoConstraints="NO" id="NVs-R1-cyv">
+                                    <rect key="frame" x="80" y="60" width="120" height="120"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="B6K-55-QZs">
+                                            <variation key="heightClass=regular-widthClass=regular" constant="140"/>
+                                        </constraint>
+                                        <constraint firstAttribute="width" secondItem="NVs-R1-cyv" secondAttribute="height" multiplier="1:1" id="yd0-82-kO3"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmZ-9e-kMt">
+                                    <rect key="frame" x="160" y="134" width="44" height="44"/>
+                                    <color key="backgroundColor" name="white"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="SBp-eQ-wJJ"/>
+                                        <constraint firstAttribute="width" secondItem="rmZ-9e-kMt" secondAttribute="height" multiplier="1:1" id="Zw2-ok-YcO"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="btnEdit">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btnEditGroupProfilePicClick:" destination="-1" eventType="touchUpInside" id="9eF-OR-kfV"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uwf-CJ-1ca">
+                                    <rect key="frame" x="20" y="220" width="240" height="55"/>
+                                    <subviews>
+                                        <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Item Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rWI-hR-Y4n" customClass="BHTextField" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="55"/>
+                                            <color key="backgroundColor" name="white"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="tv7-Oe-zb2">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="65"/>
+                                                </constraint>
+                                            </constraints>
+                                            <color key="textColor" name="black"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" name="white"/>
+                                    <constraints>
+                                        <constraint firstItem="rWI-hR-Y4n" firstAttribute="leading" secondItem="Uwf-CJ-1ca" secondAttribute="leading" id="J2Z-WO-70y"/>
+                                        <constraint firstAttribute="bottom" secondItem="rWI-hR-Y4n" secondAttribute="bottom" id="Md6-VK-DDj"/>
+                                        <constraint firstAttribute="trailing" secondItem="rWI-hR-Y4n" secondAttribute="trailing" id="hJt-ie-vZE"/>
+                                        <constraint firstItem="rWI-hR-Y4n" firstAttribute="top" secondItem="Uwf-CJ-1ca" secondAttribute="top" id="uBI-oH-3Ho"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNm-qx-ISB" customClass="BHButton" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                    <rect key="frame" x="147.5" y="305" width="117.5" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="fy2-QN-uCz">
+                                            <variation key="heightClass=regular-widthClass=regular" constant="65"/>
+                                        </constraint>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                    <state key="normal" title="OK">
+                                        <color key="titleColor" name="DefaultBlue"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clickedOnConfirmOrLetsGo:" destination="-1" eventType="touchUpInside" id="D9S-WU-iMu"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJs-jU-EB8" customClass="BHButton" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                    <rect key="frame" x="15" y="305" width="117.5" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                    <state key="normal" title="CANCEL">
+                                        <color key="titleColor" name="ButtonRed"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clickedOnCancel:" destination="-1" eventType="touchUpInside" id="1P3-PH-LXb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" name="white"/>
+                            <constraints>
+                                <constraint firstItem="RNm-qx-ISB" firstAttribute="leading" secondItem="NJs-jU-EB8" secondAttribute="trailing" constant="15" id="3sp-Mo-mLm"/>
+                                <constraint firstAttribute="trailing" secondItem="ptR-tF-9lm" secondAttribute="trailing" constant="15" id="B2b-kJ-TPU"/>
+                                <constraint firstItem="NVs-R1-cyv" firstAttribute="centerX" secondItem="TR8-oj-2Tp" secondAttribute="centerX" id="Bc1-rg-TqZ"/>
+                                <constraint firstItem="rmZ-9e-kMt" firstAttribute="centerX" secondItem="NVs-R1-cyv" secondAttribute="centerX" multiplier="1.3" id="EWC-Ii-wiQ"/>
+                                <constraint firstAttribute="trailing" secondItem="Uwf-CJ-1ca" secondAttribute="trailing" constant="20" id="MQd-xj-Qcn"/>
+                                <constraint firstItem="rmZ-9e-kMt" firstAttribute="centerY" secondItem="NVs-R1-cyv" secondAttribute="centerY" multiplier="1.3" id="XFo-nL-GGd"/>
+                                <constraint firstItem="Uwf-CJ-1ca" firstAttribute="leading" secondItem="TR8-oj-2Tp" secondAttribute="leading" constant="20" id="c8r-1K-nK2"/>
+                                <constraint firstItem="Uwf-CJ-1ca" firstAttribute="top" secondItem="NVs-R1-cyv" secondAttribute="bottom" constant="40" id="dAA-gA-fZr"/>
+                                <constraint firstItem="ptR-tF-9lm" firstAttribute="leading" secondItem="TR8-oj-2Tp" secondAttribute="leading" constant="15" id="dTf-P3-wif"/>
+                                <constraint firstItem="NJs-jU-EB8" firstAttribute="leading" secondItem="TR8-oj-2Tp" secondAttribute="leading" constant="15" id="e99-Zi-cQd"/>
+                                <constraint firstAttribute="width" constant="280" id="iar-lI-zOH"/>
+                                <constraint firstAttribute="trailing" secondItem="RNm-qx-ISB" secondAttribute="trailing" constant="15" id="jH0-sx-bVk"/>
+                                <constraint firstItem="RNm-qx-ISB" firstAttribute="top" secondItem="Uwf-CJ-1ca" secondAttribute="bottom" constant="30" id="oYI-79-38C"/>
+                                <constraint firstAttribute="bottom" secondItem="RNm-qx-ISB" secondAttribute="bottom" constant="30" id="qR6-Ys-iKV"/>
+                                <constraint firstItem="NJs-jU-EB8" firstAttribute="height" secondItem="RNm-qx-ISB" secondAttribute="height" id="r4T-xZ-vgX"/>
+                                <constraint firstItem="NJs-jU-EB8" firstAttribute="width" secondItem="RNm-qx-ISB" secondAttribute="width" id="uUS-YQ-b7H"/>
+                                <constraint firstItem="NVs-R1-cyv" firstAttribute="top" secondItem="ptR-tF-9lm" secondAttribute="bottom" constant="20" id="v65-5n-M5h"/>
+                                <constraint firstItem="NJs-jU-EB8" firstAttribute="centerY" secondItem="RNm-qx-ISB" secondAttribute="centerY" id="vdx-ig-GjB"/>
+                                <constraint firstItem="ptR-tF-9lm" firstAttribute="top" secondItem="TR8-oj-2Tp" secondAttribute="top" constant="15" id="zYf-Ju-CKc"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="TR8-oj-2Tp" firstAttribute="centerX" secondItem="G73-BT-h5p" secondAttribute="centerX" id="9G7-BF-FIP"/>
+                        <constraint firstItem="TR8-oj-2Tp" firstAttribute="centerY" secondItem="G73-BT-h5p" secondAttribute="centerY" id="F0H-Tz-2WU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Mgp-te-aup"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25520693090000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Mgp-te-aup" firstAttribute="trailing" secondItem="G73-BT-h5p" secondAttribute="trailing" id="Dyy-nX-jCg"/>
+                <constraint firstAttribute="trailing" secondItem="G73-BT-h5p" secondAttribute="trailing" id="GHf-7f-iEt"/>
+                <constraint firstItem="G73-BT-h5p" firstAttribute="leading" secondItem="Mgp-te-aup" secondAttribute="leading" id="PoW-fH-ouz"/>
+                <constraint firstAttribute="bottom" secondItem="G73-BT-h5p" secondAttribute="bottom" id="XKr-q4-dW2"/>
+                <constraint firstItem="G73-BT-h5p" firstAttribute="top" secondItem="Mgp-te-aup" secondAttribute="top" id="a4w-3E-pI7"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="106"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btnEdit" width="170" height="170"/>
+        <image name="imgProfilePlaceholderBlur" width="170" height="170"/>
+        <namedColor name="ButtonRed">
+            <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DefaultBlue">
+            <color red="0.25882352941176473" green="0.58823529411764708" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryTheme">
+            <color red="0.25882352941176473" green="0.58431372549019611" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

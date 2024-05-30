@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectedClientCell" id="gTV-IL-0wX" userLabel="SelectedClientCell" customClass="SelectedClientCell" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjC-gf-DIa">
+                        <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8O-oJ-BKX">
+                                <rect key="frame" x="10" y="10" width="64" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="-" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6y8-TD-MCJ" customClass="BHLabel" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                        <rect key="frame" x="4" y="8" width="56" height="54"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                        <color key="textColor" name="black"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="6y8-TD-MCJ" firstAttribute="top" secondItem="s8O-oJ-BKX" secondAttribute="top" constant="8" id="9dr-Wd-ndx"/>
+                                    <constraint firstAttribute="bottom" secondItem="6y8-TD-MCJ" secondAttribute="bottom" constant="8" id="TiL-YS-MBB"/>
+                                    <constraint firstAttribute="trailing" secondItem="6y8-TD-MCJ" secondAttribute="trailing" constant="4" id="Vj9-o8-VjS"/>
+                                    <constraint firstItem="6y8-TD-MCJ" firstAttribute="leading" secondItem="s8O-oJ-BKX" secondAttribute="leading" constant="4" id="cwX-rz-adB"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jto-PR-fBS">
+                                <rect key="frame" x="59" y="0.0" width="25" height="25"/>
+                                <color key="backgroundColor" name="white"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Xzd-5v-VgE"/>
+                                    <constraint firstAttribute="width" secondItem="Jto-PR-fBS" secondAttribute="height" multiplier="1:1" id="gC5-Tj-DP1"/>
+                                </constraints>
+                                <color key="tintColor" name="PrimaryTheme"/>
+                                <state key="normal" image="btnCancelBlue"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="s8O-oJ-BKX" secondAttribute="bottom" constant="4" id="Mph-ch-0ce"/>
+                            <constraint firstAttribute="trailing" secondItem="s8O-oJ-BKX" secondAttribute="trailing" constant="10" id="b7Q-7B-THF"/>
+                            <constraint firstItem="Jto-PR-fBS" firstAttribute="trailing" secondItem="s8O-oJ-BKX" secondAttribute="trailing" constant="10" id="c0i-b3-WfR"/>
+                            <constraint firstItem="s8O-oJ-BKX" firstAttribute="top" secondItem="qjC-gf-DIa" secondAttribute="top" constant="10" id="oYZ-jX-s55"/>
+                            <constraint firstItem="Jto-PR-fBS" firstAttribute="top" secondItem="s8O-oJ-BKX" secondAttribute="top" constant="-10" id="peQ-Du-7Wg"/>
+                            <constraint firstItem="s8O-oJ-BKX" firstAttribute="leading" secondItem="qjC-gf-DIa" secondAttribute="leading" constant="10" id="xfL-LZ-Apt"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qjC-gf-DIa" secondAttribute="trailing" id="HMe-BI-3vi"/>
+                <constraint firstAttribute="bottom" secondItem="qjC-gf-DIa" secondAttribute="bottom" id="UKV-Q7-VwC"/>
+                <constraint firstItem="qjC-gf-DIa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ib3-pN-UFO"/>
+                <constraint firstItem="qjC-gf-DIa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tbR-nN-UmB"/>
+            </constraints>
+            <size key="customSize" width="102" height="102"/>
+            <connections>
+                <outlet property="btnDeleteClient" destination="Jto-PR-fBS" id="Z3b-67-Uaj"/>
+                <outlet property="lblUserName" destination="6y8-TD-MCJ" id="F3A-Mk-eJy"/>
+                <outlet property="viewCellBG" destination="qjC-gf-DIa" id="yAq-dF-JWS"/>
+                <outlet property="viewUserName" destination="s8O-oJ-BKX" id="tY5-52-xRy"/>
+            </connections>
+            <point key="canvasLocation" x="-244.92753623188409" y="28.125"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="btnCancelBlue" width="170" height="170"/>
+        <namedColor name="PrimaryTheme">
+            <color red="0.25882352941176473" green="0.58431372549019611" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

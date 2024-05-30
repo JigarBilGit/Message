@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReceiverTextCell" rowHeight="136" id="KGk-i7-Jjw" userLabel="ReceiverTextCell" customClass="ReceiverTextCell" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="448" height="126"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="448" height="126"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdd-aX-OdX">
+                        <rect key="frame" x="0.0" y="0.0" width="448" height="126"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KDj-Mo-cQD">
+                                <rect key="frame" x="0.0" y="0.0" width="448" height="126"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ6-CG-Ew3">
+                                        <rect key="frame" x="0.0" y="0.0" width="448" height="126"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="X7A-zT-jBI">
+                                                <rect key="frame" x="15" y="0.0" width="236" height="33"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4R-nS-QBK">
+                                                        <rect key="frame" x="0.0" y="0.0" width="236" height="33"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqF-13-3Ce" customClass="BMLabel" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="8" width="236" height="25"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                                                <color key="textColor" name="DarkGray"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="UqF-13-3Ce" firstAttribute="leading" secondItem="s4R-nS-QBK" secondAttribute="leading" id="CRA-pA-rPG"/>
+                                                            <constraint firstItem="UqF-13-3Ce" firstAttribute="top" secondItem="s4R-nS-QBK" secondAttribute="top" priority="999" constant="8" id="S9J-Ol-WNc"/>
+                                                            <constraint firstAttribute="trailing" secondItem="UqF-13-3Ce" secondAttribute="trailing" id="jOY-8s-7rh"/>
+                                                            <constraint firstAttribute="bottom" secondItem="UqF-13-3Ce" secondAttribute="bottom" id="jUW-9c-1OI"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGc-1d-QZF" customClass="DesignableView" customModule="Spring">
+                                                <rect key="frame" x="15" y="41" width="123.5" height="45"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="3018" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Select Type" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqj-Hy-A2s" customClass="BMLabel" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                                        <rect key="frame" x="15" y="10" width="93.5" height="25"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                                        <color key="textColor" name="black"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="MessageReceiverBG"/>
+                                                <constraints>
+                                                    <constraint firstItem="Dqj-Hy-A2s" firstAttribute="leading" secondItem="WGc-1d-QZF" secondAttribute="leading" constant="15" id="6Gm-nJ-BnU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Dqj-Hy-A2s" secondAttribute="bottom" constant="10" id="8SM-oA-E6q"/>
+                                                    <constraint firstItem="Dqj-Hy-A2s" firstAttribute="top" secondItem="WGc-1d-QZF" secondAttribute="top" constant="10" id="Bbi-id-aJ5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Dqj-Hy-A2s" secondAttribute="trailing" constant="15" id="QWk-lw-Z4d"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HKT-xA-Cax">
+                                                <rect key="frame" x="15" y="94" width="128" height="32"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5m-E7-rtG">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="32"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00 AM" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okN-BP-Zyg" customClass="BMLabel" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="24"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                                                <color key="textColor" name="black"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="okN-BP-Zyg" secondAttribute="bottom" priority="999" constant="8" id="31l-Sa-2zR"/>
+                                                            <constraint firstItem="okN-BP-Zyg" firstAttribute="leading" secondItem="t5m-E7-rtG" secondAttribute="leading" id="CHt-ru-Hc4"/>
+                                                            <constraint firstItem="okN-BP-Zyg" firstAttribute="top" secondItem="t5m-E7-rtG" secondAttribute="top" id="ImE-o6-5Be"/>
+                                                            <constraint firstAttribute="trailing" secondItem="okN-BP-Zyg" secondAttribute="trailing" id="JrC-Pt-ifk"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="HKT-xA-Cax" firstAttribute="top" secondItem="WGc-1d-QZF" secondAttribute="bottom" constant="8" id="1AF-Ha-mCc"/>
+                                            <constraint firstItem="X7A-zT-jBI" firstAttribute="top" secondItem="SQ6-CG-Ew3" secondAttribute="top" id="Emc-4D-7Wr"/>
+                                            <constraint firstItem="WGc-1d-QZF" firstAttribute="width" relation="lessThanOrEqual" secondItem="SQ6-CG-Ew3" secondAttribute="width" multiplier="0.65" id="Fiv-tK-a9X"/>
+                                            <constraint firstItem="WGc-1d-QZF" firstAttribute="top" secondItem="X7A-zT-jBI" secondAttribute="bottom" constant="8" id="OKU-fx-uo5"/>
+                                            <constraint firstItem="X7A-zT-jBI" firstAttribute="leading" secondItem="SQ6-CG-Ew3" secondAttribute="leading" constant="15" id="ofo-g4-50p"/>
+                                            <constraint firstItem="WGc-1d-QZF" firstAttribute="leading" secondItem="SQ6-CG-Ew3" secondAttribute="leading" constant="15" id="qYU-it-jp6"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WGc-1d-QZF" secondAttribute="trailing" constant="120" id="xwW-7U-1yM"/>
+                                            <constraint firstAttribute="bottom" secondItem="HKT-xA-Cax" secondAttribute="bottom" id="ycK-7h-q96"/>
+                                            <constraint firstItem="HKT-xA-Cax" firstAttribute="leading" secondItem="WGc-1d-QZF" secondAttribute="leading" id="zM1-gm-jr3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="KDj-Mo-cQD" secondAttribute="trailing" id="E5v-I8-Sue"/>
+                            <constraint firstItem="KDj-Mo-cQD" firstAttribute="top" secondItem="gdd-aX-OdX" secondAttribute="top" id="Hta-aL-IcM"/>
+                            <constraint firstItem="KDj-Mo-cQD" firstAttribute="leading" secondItem="gdd-aX-OdX" secondAttribute="leading" id="MIL-vd-oX7"/>
+                            <constraint firstAttribute="bottom" secondItem="KDj-Mo-cQD" secondAttribute="bottom" id="av7-mo-1T8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gdd-aX-OdX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1iu-PJ-s4M"/>
+                    <constraint firstAttribute="trailing" secondItem="gdd-aX-OdX" secondAttribute="trailing" id="CKb-o5-FmY"/>
+                    <constraint firstAttribute="bottom" secondItem="gdd-aX-OdX" secondAttribute="bottom" id="Pkh-ZX-5Wu"/>
+                    <constraint firstItem="gdd-aX-OdX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cbZ-6L-rP4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblMessage" destination="Dqj-Hy-A2s" id="RXj-Ae-8dQ"/>
+                <outlet property="lblMessageTime" destination="okN-BP-Zyg" id="Ae8-Kq-a1M"/>
+                <outlet property="lblUserName" destination="UqF-13-3Ce" id="M1L-d1-o4C"/>
+                <outlet property="viewMessage" destination="SQ6-CG-Ew3" id="iKG-xQ-y4u"/>
+                <outlet property="viewMessageBG" destination="WGc-1d-QZF" id="yFe-VQ-jyB"/>
+                <outlet property="viewMessageTime" destination="t5m-E7-rtG" id="6lb-RP-saX"/>
+                <outlet property="viewUserName" destination="s4R-nS-QBK" id="avY-ZM-87w"/>
+            </connections>
+            <point key="canvasLocation" x="148.80000000000001" y="182.60869565217394"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="DarkGray">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MessageReceiverBG">
+            <color red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,22 @@
+{
+  "name": "Communication",
+  "version": "0.1.0",
+  "summary": "A short description of Communication.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/JigarPatel1991/Communication",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "JigarPatel1991": "jigar.patel@billiyo.com"
+  },
+  "source": {
+    "git": "https://github.com/JigarPatel1991/Communication.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "Communication/Classes/**/*"
+}
