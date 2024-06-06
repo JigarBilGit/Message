@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReceiverTextCell: MGSwipeTableCell {
+class ReceiverTextCell: UITableViewCell {
     
     @IBOutlet weak var viewMessage: UIView!
     @IBOutlet weak var viewUserName: UIView!

@@ -13,6 +13,8 @@ import CoreLocation
 import Photos
 import Zip
 import LocalAuthentication
+import Alamofire
+import SwiftSignalRClient
 
 class Connectivity1 {
     class func isConnectedToInternet() ->Bool {
@@ -23,61 +25,41 @@ class Connectivity1 {
 class MessageManager{
 
     static let shared = MessageManager()
-    //=======
         
     var isNetwork : Bool = false
     let rechability = NetworkReachabilityManager()
-    //=======
     
-    //===== Added in version 2.0.10 =====
-    //====== Notify View ================
-    //===================================
+    var hubConnectionConversation : HubConnection!
+    
     var notifyView : NotifyView = .none
-    var sharedNotification : BHSharedNotification?
-    //===================================
+    var sharedNotification : BMSharedNotification?
     
     let db = SQLiteDB.shared
     
-    //=========
-    
-    //=== Login User Details =======
-    var accessToken          : String = ""
-    var tokenType            : String = ""
-    var expiresIn            : String = "-1"
-    var refreshToken         : String = ""
-    var email                : String = ""
-    var username             : String = ""
-    var role                 : String = ""
-    var employeeId           : String = "-1"
-    var firstName            : String = ""
-    var middleName           : String = ""
-    var lastName             : String = ""
-    var uniqueValue          : String = "-1"
-    var issued               : String = "-1"
-    var expires              : String = "-1"
-    var timiroCode           : String = ""
-    var payPeriodStartDate   : String = "-1"
-    var payPeriodEndDate     : String = "-1"
-    var hasEvvClient         : Bool   = false
-    var hasNonEvvClient      : Bool   = false
-    var loginUserFullName    : String = ""
-    var isWorktimeRounding   : Bool   = false
-    var isHomeHealthAgency   : Bool = false
-    var autoDatabaseBackup   : String = "30"
-    var canDeleteEmployeeSchedule : Bool = false
-    var canCreateEmployeeSchedule : Bool = false
-    var accessTokenWithTokenType   : String = ""
-    var agencyType           : String = ""
-    var arrAgencyType        : [String] = []
-    var bypassSkilledVisitConflict : Bool = false
-    var independentAssessmentMigrated : Bool = false
-    var enableAutoSaveDocuments : Bool = false
-    var caregiverEvalRequiredSupervisor : Bool = true
-    var useQPInIncidentReports : Bool = true
+    var displayAPICallPopup         : Bool = false
+    var CommunicationAPIBaseUrl     : String = ""
+    var APIBaseUrl                  : String = ""
+    var AzureConnectionString       : String = ""
+    var SignalRConnectionUrl        : String = ""
+    var accessToken                 : String = ""
+    var tokenType                   : String = ""
+    var expiresIn                   : String = "-1"
+    var refreshToken                : String = ""
+    var email                       : String = ""
+    var username                    : String = ""
+    var role                        : String = ""
+    var employeeId                  : String = "-1"
+    var firstName                   : String = ""
+    var middleName                  : String = ""
+    var lastName                    : String = ""
+    var uniqueValue                 : String = "-1"
+    var timiroCode                  : String = ""
+    var loginUserFullName           : String = ""
+    var autoDatabaseBackup          : String = "30"
+    var accessTokenWithTokenType    : String = ""
     
     //========================================
     var umpi        : String = ""
-    var initials    : String = ""
     var roleId      : String = ""
     var emailId     : String = ""
     var jobId       : String = ""
@@ -88,17 +70,6 @@ class MessageManager{
     var state       : String = ""
     var zipcode     : String = ""
     var photo       : String = ""
-    var addedBy     : String = ""
-    var updatedBy   : String = ""
-    var updatedOn   : String = ""
-    var playEvvIntroVideo       : Bool = false
-    var playNonEvvIntroVideo    : Bool = false
-    var canEditWoundCare    : Bool = false
-    var enablePayroll       : Bool = false
-    var disableFieldInCareplanEdit : String = ""
-    
-    var canEditClosedWounds    : Bool = false
-    var contractDocumentAllowEditInNumberOfDays : String = ""
     
     var isLocationEnabled = false
     
@@ -119,6 +90,155 @@ extension MessageManager{
         } else  {
             return false
         }
+    }
+}
+
+// MARK: 
+// MARK: HUBCONNECTION DELEGATE METHODS
+extension MessageManager : HubConnectionDelegate {
+    func setupCommunicationListener() {
+        if let livechatURL = URL(string: "\(MessageManager.shared.SignalRConnectionUrl)\(MessageManager.shared.accessToken)") {
+            self.hubConnectionConversation = HubConnectionBuilder(url: livechatURL)
+                .withAutoReconnect()
+                .withLogging(minLogLevel: .error)
+                .withHubConnectionOptions(configureHubConnectionOptions: {options in options.keepAliveInterval = 10.0 })
+                .withHubConnectionDelegate(delegate: self)
+                .withPermittedTransportTypes(.webSockets)
+                .withJSONHubProtocol()
+                .withHttpConnectionOptions(configureHttpOptions: { httpConnectionOptions in
+                    if #available(iOS 13.0, *) {
+                        httpConnectionOptions.skipNegotiation = true
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                })
+                .build()
+        }
+        
+        self.hubConnectionConversation.start()
+        self.hubConnectionConversation.on(method: "CONVERSATION", callback: { (payload: ArgumentExtractor?) in
+            do{
+                print("Received Conversation Response.")
+                let response = try payload?.getArgument(type: ConvesationArguments.self)
+                if let dictConversations = response?.conversations as? Conversations{
+                    var conversationData : [String : Any] = [:]
+                    
+                    conversationData["employeeConversationId"] = dictConversations.employeeConversationId ?? 0
+                    conversationData["conversationId"] = dictConversations.conversationId ?? ""
+                    conversationData["conversationName"] = dictConversations.conversationName ?? ""
+                    conversationData["conversationImage"] = dictConversations.conversationImage ?? ""
+                    conversationData["lastMessageContent"] = dictConversations.lastMessageContent ?? ""
+                    conversationData["lastMessageTypeId"] = dictConversations.lastMessageTypeId ?? 0
+                    conversationData["lastSenderEmployeeId"] = dictConversations.lastSenderEmployeeId ?? 0
+                    conversationData["lastSenderFirstName"] = dictConversations.lastSenderFirstName ?? ""
+                    conversationData["messageDateTime"] = dictConversations.messageDateTime ?? 0
+                    conversationData["isAdmin"] = dictConversations.isAdmin ?? false
+                    conversationData["canAddEmployee"] = dictConversations.canAddEmployee ?? false
+                    conversationData["isGroup"] = dictConversations.isGroup ?? false
+                    conversationData["isConnected"] = dictConversations.isConnected ?? false
+                    conversationData["lastSeen"] = dictConversations.lastSeen ?? 0
+                    conversationData["unreadCount"] = dictConversations.unreadCount ?? 0
+                    
+                    tblConversationList().insertORUpdateConversationList(arrConversationListData: [conversationData], completion: { success in
+                        self.reloadConversationListTab()
+                        
+                        //==== Reload dashboard message count =====
+                        //==========================================
+                        self.reloadConversationCountOnDashBoard()
+                        //==========================================
+                        
+                        
+                    })
+                }
+                
+                if let arrUsers = response?.users as? [Users]{
+                    for eleUsers in arrUsers{
+                        var userData : [String : Any] = [:]
+                        
+                        userData["employeeConversationId"] = eleUsers.employeeConversationId ?? 0
+                        userData["employeeId"] = eleUsers.employeeId ?? 0
+                        userData["isAdmin"] = eleUsers.isAdmin ?? false
+                        userData["isDeleted"] = eleUsers.isDeleted ?? false
+                        userData["canAddEmployee"] = eleUsers.canAddEmployee ?? false
+                        
+                        tblUserList().insertORUpdateUserList(arrUserListData: [userData]) { success in
+                            
+                        }
+                    }
+                }
+            }
+            catch{
+                print(error)
+            }
+        })
+    }
+    
+    func reloadConversationListTab(){
+        DispatchQueue.main.async {
+//            for vc in APP_DELEGATE.rootNavigationVC!.viewControllers{
+//                if vc as? MessageListVC != nil {
+//                    if vc.isKind(of: MessageListVC.self) {
+//                        let objMessageListVC = vc as! MessageListVC
+//                        objMessageListVC.reloadConversationList()
+//                    }
+//                }
+//                else if vc as? TabBarVC != nil {
+//                    let objTabVC = vc as! TabBarVC
+//                    if objTabVC.viewControllers!.last!.isKind(of: MessageListVC.self) {
+//                        let innerVC = objTabVC.viewControllers!.last!
+//                        if innerVC.isKind(of: MessageListVC.self) {
+//                            let objMessageListVC = innerVC as! MessageListVC
+//                            objMessageListVC.reloadConversationList()
+//                        }
+//                    }
+//                }
+//            }
+        }
+    }
+    
+    func reloadConversationCountOnDashBoard(){
+        tblConversationList().getUnreadMessageConversationCount { unReadConversationCount in
+            DispatchQueue.main.async {
+//                if let topController = UIApplication.topViewController(), topController.isKind(of: DashboardVC.self) {
+//                    if let objDashboardVC = topController as? DashboardVC{
+//                        objDashboardVC.lblMessagesCount.text = "\(unReadConversationCount)"
+//                    }
+//                }
+            }
+            
+        }
+    }
+    
+    func connectionDidOpen(hubConnection: SwiftSignalRClient.HubConnection) {
+        print("--------------------- \nConnection opened successfully.\n---------------------")
+    }
+
+    func connectionDidFailToOpen(error: Error) {
+        print("--------------------- \nConnection failed to open: \(error.localizedDescription)\n---------------------")
+    }
+
+    func connectionDidClose(error: Error?) {
+        if let error = error {
+            print("--------------------- \nConnection closed with error: \(error.localizedDescription)\n---------------------")
+        } else {
+            print("--------------------- \nConnection closed gracefully.\n---------------------")
+        }
+    }
+
+    func connectionWillReconnect(error: Error) {
+        print("--------------------- \nConnection will attempt to reconnect: \(error.localizedDescription)\n---------------------")
+    }
+
+    func connectionDidReconnect() {
+        print("--------------------- \nConnection successfully reconnected.\n---------------------")
+    }
+
+    func connectionDidReceiveData(connection: SwiftSignalRClient.Connection, data: Data) {
+        print("--------------------- \nConnection successfully reconnected(Connection).\n---------------------")
+    }
+
+    func connectionDidReceiveData(hubConnection: HubConnection, data: Any) {
+        print("--------------------- \nConnection successfully reconnected(HubConnection).\n---------------------")
     }
 }
 
@@ -159,7 +279,7 @@ extension MessageManager{
     }*/
     
     func openValidationAlertView(alertMessage:String, currentVC : UIViewController){
-        let alertController = UIAlertController(title: AppConstant.GlobalConstants.anAppName as String, message: alertMessage, preferredStyle: .alert)
+        let alertController = UIAlertController(title: MessageConstant.GlobalConstants.anAppName as String, message: alertMessage, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         currentVC.present(alertController, animated: true, completion: nil)
     }
@@ -179,19 +299,8 @@ extension MessageManager{
                                        rightButtonTitle:String? = "keyOKUpperCase".localize,
                                        leftButtonTitle:String? = ""){
         DispatchQueue.main.async {
-            _ = BHAlertVC.init(title: alertTitle ?? "keyAlert".localize, message: alertMessage, rightButtonTitle: rightButtonTitle ?? "keyOKUpperCase".localize, leftButtonTitle: leftButtonTitle) { success, actionType in }
+//            _ = BMAlertVC.init(title: alertTitle ?? "keyAlert".localize, message: alertMessage, rightButtonTitle: rightButtonTitle ?? "keyOKUpperCase".localize, leftButtonTitle: leftButtonTitle) { success, actionType in }
         }
-        
-    }
-    
-    func openNotesRemarksAlertView(alertTitle : String? = "keyAlert".localize,
-                                       alertMessage : String,
-                                       rightButtonTitle:String? = "keyOKUpperCase".localize,
-                                       leftButtonTitle:String? = ""){
-        DispatchQueue.main.async {
-            NotesRemarksView.instance.showAlert(title: alertTitle ?? "keyAlert".localize, message: alertMessage, rightButtonTitle: rightButtonTitle ?? "keyOKUpperCase".localize, leftButtonTitle: leftButtonTitle) { success, actionType in }
-        }
-        
     }
 }
 
@@ -223,7 +332,6 @@ extension MessageManager {
             
         }
         else{
-            
             let objSyncTime = tblSyncTime()
             objSyncTime.syncTime = syncTime
             objSyncTime.apiName = apiName
@@ -468,6 +576,57 @@ extension MessageManager {
 }
 
 // MARK: 
+// MARK: Data Type Conversation
+//
+extension MessageManager {
+    func convertStringToBool(value : Any)->Bool{
+        if let givenValue = value as? String {
+            return (givenValue.toBool() ?? false)
+        }
+        else if let givenValue = value as? Int{
+            if(givenValue == 1){
+                return true
+            }else{
+                return false
+            }
+        }
+        else{
+            return value as? Bool ?? false
+        }
+    }
+    
+    func convertBoolToInt(value : Bool)->Int{
+       // Zero is used to represent false,
+        // and One is used to represent true.
+        if(value){
+            return 1
+        }else{
+            return 0
+        }
+    }
+    
+    func convertIntToBool(value : Int)->Bool{
+       // Zero is used to represent false,
+        // and One is used to represent true.
+        if(value == 1){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    
+    func isSuccessInsert(value : Int)->Bool{
+
+        if(value == 0){
+            return false
+        }else{
+            return true
+        }
+    }
+    
+}
+// MARK: 
 // MARK:  Document Directory Methods
 extension MessageManager {
     func getDocumentDirPath() -> String {
@@ -622,106 +781,89 @@ extension MessageManager {
     }
 }
 
-// MARK: 
-// MARK:  Options Methods
-
-extension MessageManager {
-    func removeDuplicateOptions(mainArray : [CAOption]) -> [CAOption]{
-        var resultArray = [CAOption]()
-        var arrayClinicalFormFieldId = [Int]()
-        for objOption in mainArray {
-            if !arrayClinicalFormFieldId.contains(objOption.clinicalFormFieldOptionId) {
-                resultArray.append(objOption)
-                arrayClinicalFormFieldId.append(objOption.clinicalFormFieldOptionId)
-            }
-        }
-        return resultArray
-    }
-}
-
 extension MessageManager {
     // MARK: 
     // MARK: CONVERSATION LIST METHODS
     func call_EmployeeListAPI(showLoader : Bool, completion: @escaping (Bool) -> Void) {
         let paramer: [String: Any] = [:]
-        Webservice.call.GET(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.employees_retrieve, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "EmployeeList", isForCommunication: true, onSuccess: { (result, success, requestId) in
-            let _ = tblAPISyncStatus().setAPISyncStatus(apiSyncStatus: 1, apiName: "EmployeeList", requestId: requestId)
-            if let arrEmployeeData = result as? [[String : Any]] {
-                _ = tblEmployees().deleteAllRecord()
-                
-                if tblEmployees().saveAllRecords(arrParams: arrEmployeeData) != 0{
-
-                }
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.GET(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.employees_retrieve, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "EmployeeList", isForCommunication: true, onSuccess: { (result, success, requestId) in
+//            let _ = tblAPISyncStatus().setAPISyncStatus(apiSyncStatus: 1, apiName: "EmployeeList", requestId: requestId)
+//            if let arrEmployeeData = result as? [[String : Any]] {
+//                _ = tblEmployees().deleteAllRecord()
+//                
+//                if tblEmployees().saveAllRecords(arrParams: arrEmployeeData) != 0{
+//
+//                }
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_ConversationListAPI(showLoader : Bool, completion: @escaping (Bool) -> Void) {
-        let lastSyncTime = AppManager.shared.getSyncTime(for: SyncTimeConstant.APIName.ConversationList)
-        
-        var paramer: [String: Any] = [:]
-        paramer["syncTime"] = lastSyncTime
-        
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_retrieve, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, isOffline: true, isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let dictConversationData = result as? [String : Any] {
-                let _ = tblAPISyncStatus().setAPISyncStatus(apiSyncStatus: 1, apiName: "ConversationList", requestId: requestId)
-                if lastSyncTime == 0{
-                    _ = tblConversationList().deleteAllRecord()
-                    _ = tblUserList().deleteAllRecord()
-                }
-                
-                if let arrUserListData = dictConversationData["users"] as? [[String : Any]], arrUserListData.count > 0 {
-                    if lastSyncTime == 0{
-                        if tblUserList().saveAllRecords(arrParams: arrUserListData) != 0{
-
-                        }
-                    }
-                    else{
-                        tblUserList().insertORUpdateUserList(arrUserListData: arrUserListData) { success in
-                            
-                        }
-                    }
-                }
-                
-                if let arrConversationListData = dictConversationData["conversations"] as? [[String : Any]], arrConversationListData.count > 0 {
-                    if lastSyncTime == 0{
-                        if tblConversationList().saveAllRecords(arrParams: arrConversationListData) != 0{
-                            self.downloadConversationPic()
-                            self.call_MessageRetrieveAPI()
-                            completion(true)
-                        }
-                    }
-                    else{
-                        tblConversationList().insertORUpdateConversationList(arrConversationListData: arrConversationListData) { success in
-                            self.downloadConversationPic()
-                            self.call_MessageRetrieveAPI()
-                            completion(true)
-                        }
-                    }
-                }
-                else{
-                    self.downloadConversationPic()
-                    completion(true)
-                }
-                
-                let syncTime = dictConversationData["syncTime"] as? Int64 ?? 0
-                AppManager.shared.setSyncTime(syncTime: syncTime, apiName: SyncTimeConstant.APIName.ConversationList)
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        let lastSyncTime = MessageManager.shared.getSyncTime(for: SyncTimeConstant.APIName.ConversationList)
+//        
+//        var paramer: [String: Any] = [:]
+//        paramer["syncTime"] = lastSyncTime
+//        
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_retrieve, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, isOffline: true, isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let dictConversationData = result as? [String : Any] {
+//                let _ = tblAPISyncStatus().setAPISyncStatus(apiSyncStatus: 1, apiName: "ConversationList", requestId: requestId)
+//                if lastSyncTime == 0{
+//                    _ = tblConversationList().deleteAllRecord()
+//                    _ = tblUserList().deleteAllRecord()
+//                }
+//                
+//                if let arrUserListData = dictConversationData["users"] as? [[String : Any]], arrUserListData.count > 0 {
+//                    if lastSyncTime == 0{
+//                        if tblUserList().saveAllRecords(arrParams: arrUserListData) != 0{
+//
+//                        }
+//                    }
+//                    else{
+//                        tblUserList().insertORUpdateUserList(arrUserListData: arrUserListData) { success in
+//                            
+//                        }
+//                    }
+//                }
+//                
+//                if let arrConversationListData = dictConversationData["conversations"] as? [[String : Any]], arrConversationListData.count > 0 {
+//                    if lastSyncTime == 0{
+//                        if tblConversationList().saveAllRecords(arrParams: arrConversationListData) != 0{
+//                            self.downloadConversationPic()
+//                            self.call_MessageRetrieveAPI()
+//                            completion(true)
+//                        }
+//                    }
+//                    else{
+//                        tblConversationList().insertORUpdateConversationList(arrConversationListData: arrConversationListData) { success in
+//                            self.downloadConversationPic()
+//                            self.call_MessageRetrieveAPI()
+//                            completion(true)
+//                        }
+//                    }
+//                }
+//                else{
+//                    self.downloadConversationPic()
+//                    completion(true)
+//                }
+//                
+//                let syncTime = dictConversationData["syncTime"] as? Int64 ?? 0
+//                MessageManager.shared.setSyncTime(syncTime: syncTime, apiName: "ConversationList")
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func downloadConversationPic(){
         let arrConversationListData = tblConversationList.rowsFor(sql: "SELECT * FROM tblConversationList where isConversationImageDownloaded = '\(0)' AND conversationImage != ''")
         if arrConversationListData.count > 0{
             DispatchQueue.background(background: {
-                if !AppManager.shared.checkFileExist(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: arrConversationListData[0].conversationImage){
-                    BHAzure.loadDataFromAzure(clientSignature: arrConversationListData[0].conversationImage) { success, error, data in
+                if !MessageManager.shared.checkFileExist(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: arrConversationListData[0].conversationImage){
+                    BMAzure.loadDataFromAzure(clientSignature: arrConversationListData[0].conversationImage) { success, error, data in
                         if success && data != nil {
-                            AppManager.shared.saveFileToDirectory(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: arrConversationListData[0].conversationImage, fileData: data!)
+                            MessageManager.shared.saveFileToDirectory(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: arrConversationListData[0].conversationImage, fileData: data!)
                             _ = tblConversationList().setConversationImageDownloadedStatus(isConversationImageDownloaded: 1, conversationId: arrConversationListData[0].conversationId)
                             
                             self.downloadConversationPic()
@@ -754,9 +896,9 @@ extension MessageManager {
                 
             }
             
-            if index == arrConversation.count - 1 {
-                let _ = tblAPISyncStatus().setAPISyncStatus(apiSyncStatus: 1, apiName: "Message_List", requestId: "")
-            }
+//            if index == arrConversation.count - 1 {
+//                let _ = tblAPISyncStatus().setAPISyncStatus(apiSyncStatus: 1, apiName: "Message_List", requestId: "")
+//            }
         }
     }
     
@@ -767,26 +909,26 @@ extension MessageManager {
         paramer["lastMessageId"] = lastMessageId
         paramer["nextOrPrevious"] = nextOrPrevious
         
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.message_retrieve, params: paramer, enableInteraction: true, showLoader: false, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let dictMessageData = result as? [String : Any] {
-                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
-                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
-                        completion(true, arrMessageData.count < pageSize ? false : true)
-                    }
-                }
-                else{
-                    completion(true, false)
-                }
-                
-                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
-                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
-
-                    }
-                }
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.message_retrieve, params: paramer, enableInteraction: true, showLoader: false, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let dictMessageData = result as? [String : Any] {
+//                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
+//                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
+//                        completion(true, arrMessageData.count < pageSize ? false : true)
+//                    }
+//                }
+//                else{
+//                    completion(true, false)
+//                }
+//                
+//                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
+//                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
+//
+//                    }
+//                }
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_MessagesDataSubmitAPI(arrMessagesData : [tblMessages], showLoader : Bool, mobilePrimaryKey : String, completion: @escaping (Bool) -> Void){
@@ -852,55 +994,55 @@ extension MessageManager {
             arrFinalMessageData.append(dictMessageData)
         }
         
-        Webservice.call.POSTArray(filePath: APIConstant.ServiceType.message_send, params: arrFinalMessageData, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, isOffline: true, isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let arrResponse = result as? [[String : Any]], arrResponse.count > 0 {
-                for (index, eleResponse) in arrResponse.enumerated(){
-                    if let messageData = eleResponse["message"] as? [String : Any] {
-                        tblMessages().insertORUpdateSingleMessage(messagesData: messageData) { success in
-                             
-                        }
-                    }
-                    
-                    if let arrMessageReceiptsData = eleResponse["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
-                        tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
-
-                        }
-                    }
-                    
-                    if index == arrResponse.count - 1{
-                        completion(true)
-                    }
-                }
-            }
-            else{
-                completion(true)
-            }
-        }) {result,success, requestId in
-            if result is [String : Any] {
-                if !success{
-                    
-                }
-            }
-        }
+//        Webservice.call.POSTArray(filePath: APIConstant.ServiceType.message_send, params: arrFinalMessageData, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, isOffline: true, isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let arrResponse = result as? [[String : Any]], arrResponse.count > 0 {
+//                for (index, eleResponse) in arrResponse.enumerated(){
+//                    if let messageData = eleResponse["message"] as? [String : Any] {
+//                        tblMessages().insertORUpdateSingleMessage(messagesData: messageData) { success in
+//                             
+//                        }
+//                    }
+//                    
+//                    if let arrMessageReceiptsData = eleResponse["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
+//                        tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
+//
+//                        }
+//                    }
+//                    
+//                    if index == arrResponse.count - 1{
+//                        completion(true)
+//                    }
+//                }
+//            }
+//            else{
+//                completion(true)
+//            }
+//        }) {result,success, requestId in
+//            if result is [String : Any] {
+//                if !success{
+//                    
+//                }
+//            }
+//        }
     }
     
     func call_ReadMessagesAPI(employeeConversationId : Int64, showLoader : Bool, completion: @escaping (Bool) -> Void) {
         var dictMessageData : [String : Any] = [:]
         dictMessageData["employeeConversationId"] = employeeConversationId
 
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.message_read, params: dictMessageData, enableInteraction: true, showLoader: false, viewObj: nil, isForCommunication : true, onSuccess: { (result, success, requestId) in
-            if let Dict = result as? [String:Any] {
-                print("d sds dsa")
-            }
-            
-            if let arrResponse = result as? [[String : Any]], arrResponse.count > 0 {
-                
-                print("sdsad")
-            }
-            
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.message_read, params: dictMessageData, enableInteraction: true, showLoader: false, viewObj: nil, isForCommunication : true, onSuccess: { (result, success, requestId) in
+//            if let Dict = result as? [String:Any] {
+//                print("d sds dsa")
+//            }
+//            
+//            if let arrResponse = result as? [[String : Any]], arrResponse.count > 0 {
+//                
+//                print("sdsad")
+//            }
+//            
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     
@@ -910,26 +1052,26 @@ extension MessageManager {
         paramer["employeeConversationId"] = employeeConversationId
         paramer["conversationMessageId"] = conversationMessageId
         
-        Webservice.call.DELETE(filePath: APIConstant.ServiceType.message_delete, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let response = result as? [String : Any] {
-                if let messageData = response["message"] as? [String : Any] {
-                    tblMessages().insertORUpdateSingleMessage(messagesData: messageData) { success in
-                        completion(true)
-                    }
-                }
-                
-                if let arrMessageReceiptsData = response["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
-                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
-
-                    }
-                }
-            }
-            else{
-                completion(true)
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.DELETE(filePath: APIConstant.ServiceType.message_delete, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let response = result as? [String : Any] {
+//                if let messageData = response["message"] as? [String : Any] {
+//                    tblMessages().insertORUpdateSingleMessage(messagesData: messageData) { success in
+//                        completion(true)
+//                    }
+//                }
+//                
+//                if let arrMessageReceiptsData = response["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
+//                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
+//
+//                    }
+//                }
+//            }
+//            else{
+//                completion(true)
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_CreateConvesationAPI(employeeIds : [Int64], groupName : String, groupImage : String, isGroup : Bool, showLoader : Bool, completion: @escaping (Bool, Int64) -> Void){
@@ -939,28 +1081,28 @@ extension MessageManager {
         paramer["groupImage"] = groupImage
         paramer["isGroup"] = isGroup
         
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_create, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let dictMessageData = result as? [String : Any] {
-                if let arrUserListData = dictMessageData["users"] as? [[String : Any]], arrUserListData.count > 0 {
-                    tblUserList().insertORUpdateUserList(arrUserListData: arrUserListData) { success in
-                            
-                    }
-                }
-                
-                if let arrConversationListData = dictMessageData["conversations"] as? [String : Any] {
-                    tblConversationList().insertORUpdateConversationList(arrConversationListData: [arrConversationListData]) { success in
-                        self.downloadConversationPic()
-                        completion(true, arrConversationListData["employeeConversationId"] as? Int64 ?? 0)
-                    }
-                }
-                else{
-                    self.downloadConversationPic()
-                    completion(true, 0)
-                }
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_create, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let dictMessageData = result as? [String : Any] {
+//                if let arrUserListData = dictMessageData["users"] as? [[String : Any]], arrUserListData.count > 0 {
+//                    tblUserList().insertORUpdateUserList(arrUserListData: arrUserListData) { success in
+//                            
+//                    }
+//                }
+//                
+//                if let arrConversationListData = dictMessageData["conversations"] as? [String : Any] {
+//                    tblConversationList().insertORUpdateConversationList(arrConversationListData: [arrConversationListData]) { success in
+//                        self.downloadConversationPic()
+//                        completion(true, arrConversationListData["employeeConversationId"] as? Int64 ?? 0)
+//                    }
+//                }
+//                else{
+//                    self.downloadConversationPic()
+//                    completion(true, 0)
+//                }
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_UpdateConvesationAPI(employeeConversationId : Int64, groupName : String, groupImage : String, showLoader : Bool, completion: @escaping (Bool) -> Void){
@@ -969,42 +1111,42 @@ extension MessageManager {
         paramer["groupName"] = groupName
         paramer["groupImage"] = groupImage
         
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_update, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let dictMessageData = result as? [String : Any] {
-                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
-                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
-                         completion(true)
-                    }
-                }
-                else{
-                    completion(true)
-                }
-                
-                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
-                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
-
-                    }
-                }
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_update, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let dictMessageData = result as? [String : Any] {
+//                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
+//                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
+//                         completion(true)
+//                    }
+//                }
+//                else{
+//                    completion(true)
+//                }
+//                
+//                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
+//                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
+//
+//                    }
+//                }
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_LeaveConvesationAPI(employeeConversationId : Int64, showLoader : Bool, completion: @escaping (Bool) -> Void){
         var paramer: [String: Any] = [:]
         paramer["employeeConversationId"] = employeeConversationId
         
-        Webservice.call.DELETE(filePath: APIConstant.ServiceType.conversation_leave, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let _ = result as? [String : Any] {
-                completion(true)
-            }
-            else{
-                completion(false)
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.DELETE(filePath: APIConstant.ServiceType.conversation_leave, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let _ = result as? [String : Any] {
+//                completion(true)
+//            }
+//            else{
+//                completion(false)
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_MakeAdminAPI(employeeConversationId : Int64, employeeId : Int64, showLoader : Bool, completion: @escaping (Bool) -> Void){
@@ -1012,26 +1154,26 @@ extension MessageManager {
         paramer["employeeConversationId"] = employeeConversationId
         paramer["employeeId"] = employeeId
         
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.make_admin, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let dictMessageData = result as? [String : Any] {
-                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
-                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
-                         completion(true)
-                    }
-                }
-                else{
-                    completion(true)
-                }
-                
-                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
-                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
-
-                    }
-                }
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.make_admin, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let dictMessageData = result as? [String : Any] {
+//                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
+//                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
+//                         completion(true)
+//                    }
+//                }
+//                else{
+//                    completion(true)
+//                }
+//                
+//                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
+//                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
+//
+//                    }
+//                }
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_RemoveAdminAPI(employeeConversationId : Int64, employeeId : Int64, showLoader : Bool, completion: @escaping (Bool) -> Void){
@@ -1039,26 +1181,26 @@ extension MessageManager {
         paramer["employeeConversationId"] = employeeConversationId
         paramer["employeeId"] = "\(employeeId)"
         
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.remove_admin, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let dictMessageData = result as? [String : Any] {
-                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
-                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
-                         completion(true)
-                    }
-                }
-                else{
-                    completion(true)
-                }
-                
-                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
-                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
-
-                    }
-                }
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.remove_admin, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let dictMessageData = result as? [String : Any] {
+//                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
+//                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
+//                         completion(true)
+//                    }
+//                }
+//                else{
+//                    completion(true)
+//                }
+//                
+//                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
+//                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
+//
+//                    }
+//                }
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_ConversationAddEmployeeAPI(employeeConversationId : Int64, employeeIds : [Int64], showLoader : Bool, completion: @escaping (Bool) -> Void){
@@ -1066,26 +1208,26 @@ extension MessageManager {
         paramer["employeeConversationId"] = employeeConversationId
         paramer["inviteEmployeeIds"] = employeeIds.compactMap({"\($0)"}).joined(separator: ",")
         
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_add_employee, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let dictMessageData = result as? [String : Any] {
-                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
-                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
-                         completion(true)
-                    }
-                }
-                else{
-                    completion(true)
-                }
-                
-                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
-                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
-
-                    }
-                }
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_add_employee, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let dictMessageData = result as? [String : Any] {
+//                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
+//                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
+//                         completion(true)
+//                    }
+//                }
+//                else{
+//                    completion(true)
+//                }
+//                
+//                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
+//                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
+//
+//                    }
+//                }
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_ConversationRemoveEmployeeAPI(employeeConversationId : Int64, employeeIds : [Int64], showLoader : Bool, completion: @escaping (Bool) -> Void){
@@ -1093,26 +1235,26 @@ extension MessageManager {
         paramer["employeeConversationId"] = employeeConversationId
         paramer["RemovingEmployeeIds"] = employeeIds.compactMap({"\($0)"}).joined(separator: ",")
         
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_remove_employee, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let dictMessageData = result as? [String : Any] {
-                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
-                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
-                         completion(true)
-                    }
-                }
-                else{
-                    completion(true)
-                }
-                
-                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
-                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
-
-                    }
-                }
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.conversation_remove_employee, params: paramer, enableInteraction: !showLoader, showLoader: showLoader, viewObj: (self.window?.rootViewController?.view)!, strAPITag: "", isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let dictMessageData = result as? [String : Any] {
+//                if let arrMessageData = dictMessageData["messages"] as? [[String : Any]], arrMessageData.count > 0 {
+//                    tblMessages().insertORUpdateMessages(arrMessagesData: arrMessageData) { success in
+//                         completion(true)
+//                    }
+//                }
+//                else{
+//                    completion(true)
+//                }
+//                
+//                if let arrMessageReceiptsData = dictMessageData["receipts"] as? [[String : Any]], arrMessageReceiptsData.count > 0 {
+//                    tblMessageReceipts().insertORUpdateMessageReceipts(arrMessageReceiptsData: arrMessageReceiptsData) { success in
+//
+//                    }
+//                }
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
     
     func call_UploadContentOnAzure(resourceId : Int, strDocumentFile : String, strErrorMessage : String, strResourceType : String, strResourceName : String, completion: @escaping (Bool) -> Void) {
@@ -1123,16 +1265,16 @@ extension MessageManager {
         paramer["resourceType"] = strResourceType
         paramer["resourceName"] = strResourceName
             
-        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.content_backup, params: paramer, enableInteraction: true, showLoader: false, viewObj: nil, isForCommunication: true, onSuccess: { (result, success,requestId) in
-            if let _ = result as? [String : Any] {
-                completion(true)
-            }
-            else{
-                completion(false)
-            }
-        }) {
-            print("Error \(self.description)")
-        }
+//        Webservice.call.POST(objVC: (self.window?.rootViewController)!, filePath: APIConstant.ServiceType.content_backup, params: paramer, enableInteraction: true, showLoader: false, viewObj: nil, isForCommunication: true, onSuccess: { (result, success,requestId) in
+//            if let _ = result as? [String : Any] {
+//                completion(true)
+//            }
+//            else{
+//                completion(false)
+//            }
+//        }) {
+//            print("Error \(self.description)")
+//        }
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SenderAudioCell: MGSwipeTableCell {
+class SenderAudioCell: UITableViewCell {
     @IBOutlet weak var viewMessage: UIView!
     @IBOutlet weak var viewUserName: UIView!
     @IBOutlet weak var lblUserName: BMLabel!

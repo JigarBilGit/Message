@@ -107,7 +107,7 @@ class MessageListVC: UIViewController {
         self.view.endEditing(true)
         let width = MessageConstant.is_Device._iPhone ? 60.0 : 75.0
         
-        let objPopOverOptionVC = BHPopOverImageOptionsVC()
+        let objPopOverOptionVC = BMPopOverImageOptionsVC()
         objPopOverOptionVC.arrImgOptions = [#imageLiteral(resourceName: "imgGroupChat"), #imageLiteral(resourceName: "imgChat")]
         objPopOverOptionVC.size = CGSize(width: width, height: 2 * width + 20)
         objPopOverOptionVC.showPopover(sourceView: sender, shouldDismissOnTap: true)
@@ -242,7 +242,7 @@ extension MessageListVC : UITableViewDelegate,UITableViewDataSource {
                 }
             }
             else{
-                BHAzure.loadDataFromAzure(clientSignature: self.arrFilteredConversationList[indexPath.row].conversationImage) { success, error, data in
+                BMAzure.loadDataFromAzure(clientSignature: self.arrFilteredConversationList[indexPath.row].conversationImage) { success, error, data in
                     if success && data != nil {
                         MessageManager.shared.saveFileToDirectory(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: self.arrFilteredConversationList[indexPath.row].conversationImage, fileData: data!)
                         DispatchQueue.main.async {

@@ -13,7 +13,7 @@
         <!--Message ProfileVC-->
         <scene sceneID="ZCV-RQ-Wyq">
             <objects>
-                <viewController storyboardIdentifier="MessageProfileVC" id="EGd-1e-r6D" customClass="MessageProfileVC" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageProfileVC" id="EGd-1e-r6D" customClass="MessageProfileVC" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ep2-vH-Rve">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Byi-N4-VfQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAX-bP-cGu" customClass="BLButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAX-bP-cGu" customClass="BLButton" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="nAX-bP-cGu" secondAttribute="height" multiplier="1:1" id="1KO-Nj-Zgw"/>
@@ -43,7 +43,7 @@
                                                             <action selector="btnBackClick:" destination="EGd-1e-r6D" eventType="touchUpInside" id="8JK-w9-6IR"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="2218" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HC9-ZV-3cs" customClass="BHButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <button opaque="NO" tag="2218" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HC9-ZV-3cs" customClass="BHButton" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="285" y="0.0" width="90" height="60"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                         <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
@@ -63,13 +63,13 @@
                                                             </constraint>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" tag="8220" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wts-Bd-4AG" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="8220" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wts-Bd-4AG" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="225" width="335" height="27.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" tag="8220" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3r-ed-j3y" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="8220" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3r-ed-j3y" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="256.5" width="335" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="white"/>
@@ -101,7 +101,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJV-Sn-D0p">
                                                         <rect key="frame" x="0.0" y="20" width="375" height="350.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" tag="3022" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9P-kw-2ye" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="3022" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9P-kw-2ye" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                 <rect key="frame" x="154.5" y="0.0" width="66.5" height="30.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                                                 <color key="textColor" name="black"/>
@@ -123,13 +123,13 @@
                                                                                             <constraint firstAttribute="height" constant="40" id="ho9-Lz-2zd"/>
                                                                                         </constraints>
                                                                                     </imageView>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDI-Vs-z8g" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDI-Vs-z8g" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="black"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjQ-MK-gVm" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjQ-MK-gVm" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="DarkGray"/>
@@ -155,13 +155,13 @@
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgEmail" translatesAutoresizingMaskIntoConstraints="NO" id="yRg-O8-Iye">
                                                                                         <rect key="frame" x="0.0" y="9" width="40" height="40"/>
                                                                                     </imageView>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fW-hb-C3m" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fW-hb-C3m" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="black"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjH-Nu-17E" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjH-Nu-17E" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="DarkGray"/>
@@ -184,13 +184,13 @@
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgJobTitle" translatesAutoresizingMaskIntoConstraints="NO" id="JH8-9d-uGt">
                                                                                         <rect key="frame" x="0.0" y="9" width="40" height="40"/>
                                                                                     </imageView>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xij-KN-S5i" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xij-KN-S5i" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="black"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDW-rN-uKK" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDW-rN-uKK" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="DarkGray"/>
@@ -213,13 +213,13 @@
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgContactNumber" translatesAutoresizingMaskIntoConstraints="NO" id="h8r-bi-N89">
                                                                                         <rect key="frame" x="0.0" y="9" width="40" height="40"/>
                                                                                     </imageView>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ContactNumber" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-Ke-1dU" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ContactNumber" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-Ke-1dU" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="black"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6W-EA-c68" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6W-EA-c68" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="DarkGray"/>
@@ -292,7 +292,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLu-kB-sFQ">
                                                         <rect key="frame" x="0.0" y="20" width="375" height="350.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" tag="5020" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPa-bO-72F" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="5020" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPa-bO-72F" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                 <rect key="frame" x="154.5" y="0.0" width="66.5" height="30.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                                                 <color key="textColor" name="black"/>
@@ -314,13 +314,13 @@
                                                                                             <constraint firstAttribute="height" constant="40" id="qiT-E5-1Tb"/>
                                                                                         </constraints>
                                                                                     </imageView>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-vu-jzR" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-vu-jzR" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="black"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkt-sj-do5" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkt-sj-do5" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="DarkGray"/>
@@ -346,13 +346,13 @@
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgEmail" translatesAutoresizingMaskIntoConstraints="NO" id="Y3F-Vx-rxV">
                                                                                         <rect key="frame" x="0.0" y="9" width="40" height="40"/>
                                                                                     </imageView>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RA2-oq-QqV" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RA2-oq-QqV" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="black"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaW-rD-45r" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaW-rD-45r" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="DarkGray"/>
@@ -375,13 +375,13 @@
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgMessageTheme" translatesAutoresizingMaskIntoConstraints="NO" id="CR9-2y-NJZ">
                                                                                         <rect key="frame" x="0.0" y="9" width="40" height="40"/>
                                                                                     </imageView>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDw-9z-rtH" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDw-9z-rtH" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="black"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOd-Lc-Xax" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOd-Lc-Xax" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                         <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                         <color key="textColor" name="DarkGray"/>
@@ -460,19 +460,19 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAZ-aF-WIu">
                                                         <rect key="frame" x="0.0" y="20" width="375" height="350.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" tag="8120" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Info" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1X-fr-X1w" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="8120" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Info" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1X-fr-X1w" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                 <rect key="frame" x="131.5" y="0.0" width="112" height="30.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                                                 <color key="textColor" name="black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" tag="5020" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcX-iD-hU0" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="5020" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcX-iD-hU0" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                 <rect key="frame" x="20" y="38" width="57" height="30.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                                                 <color key="textColor" name="PrimaryTheme"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEz-uF-8En" customClass="BLButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEz-uF-8En" customClass="BLButton" customModule="Communication" customModuleProvider="target">
                                                                 <rect key="frame" x="295" y="23.5" width="60" height="60"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="dEz-uF-8En" secondAttribute="height" multiplier="1:1" id="JL2-M7-JoR"/>
@@ -671,7 +671,7 @@
                                             <constraint firstAttribute="width" secondItem="8EA-R9-pfK" secondAttribute="height" multiplier="1:1" id="Tnh-Fb-7Q4"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="1016" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHe-BB-AJC" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1016" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHe-BB-AJC" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                         <rect key="frame" x="80" y="34" width="5.5" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <color key="textColor" name="black"/>
@@ -768,13 +768,13 @@
                                                     <constraint firstAttribute="width" secondItem="CMS-dM-2hY" secondAttribute="height" multiplier="1:1" id="wPi-ve-js6"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="8220" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYH-lL-qJp" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="8220" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYH-lL-qJp" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="225" width="335" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="8220" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loF-n1-m9q" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="8220" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loF-n1-m9q" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="256.5" width="335" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="white"/>
@@ -802,7 +802,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkP-i6-SK9">
                                                 <rect key="frame" x="0.0" y="20" width="375" height="350.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" tag="5020" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMU-rV-Pyy" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="5020" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMU-rV-Pyy" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="154.5" y="0.0" width="66.5" height="30.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                                         <color key="textColor" name="black"/>
@@ -824,13 +824,13 @@
                                                                                     <constraint firstAttribute="height" constant="40" id="dh0-k5-SEe"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpL-TB-anp" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpL-TB-anp" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                 <color key="textColor" name="black"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrG-6Z-s3X" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrG-6Z-s3X" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                 <color key="textColor" name="DarkGray"/>
@@ -856,13 +856,13 @@
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgEmail" translatesAutoresizingMaskIntoConstraints="NO" id="d9r-L6-9cO">
                                                                                 <rect key="frame" x="0.0" y="9" width="40" height="40"/>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyr-sc-YyM" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyr-sc-YyM" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                 <color key="textColor" name="black"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lT-00-oOu" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lT-00-oOu" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                 <color key="textColor" name="DarkGray"/>
@@ -885,13 +885,13 @@
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgMessageTheme" translatesAutoresizingMaskIntoConstraints="NO" id="fnU-3w-u7s">
                                                                                 <rect key="frame" x="0.0" y="9" width="40" height="40"/>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyB-UZ-FXO" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1618" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyB-UZ-FXO" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="50" y="4" width="245" height="25"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                 <color key="textColor" name="black"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICi-o0-Ke7" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1718" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICi-o0-Ke7" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="50" y="29" width="245" height="25"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                                 <color key="textColor" name="DarkGray"/>
@@ -1103,7 +1103,7 @@
         <!--Message Attachment PickerVC-->
         <scene sceneID="9hk-EN-ccd">
             <objects>
-                <viewController storyboardIdentifier="MessageAttachmentPickerVC" id="t0o-aQ-F0R" customClass="MessageAttachmentPickerVC" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageAttachmentPickerVC" id="t0o-aQ-F0R" customClass="MessageAttachmentPickerVC" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wZD-yd-hPU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1126,7 +1126,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3S-z7-Vw7">
                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="60"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Type" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxO-N2-HgE" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Type" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxO-N2-HgE" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="118.5" y="17.5" width="93.5" height="25"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <color key="textColor" name="white"/>
@@ -1167,7 +1167,7 @@
                                                                                     </constraint>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiu-wk-4Ia" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiu-wk-4Ia" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="30.5" y="55" width="38" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                 <color key="textColor" name="black"/>
@@ -1229,7 +1229,7 @@
                                                                                     <constraint firstAttribute="width" secondItem="eBF-l6-vfb" secondAttribute="height" multiplier="1:1" id="ikE-Im-1aJ"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNn-CL-Zh5" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNn-CL-Zh5" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="28.5" y="55" width="42.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                 <color key="textColor" name="black"/>
@@ -1291,7 +1291,7 @@
                                                                                     <constraint firstAttribute="width" secondItem="uNv-5Y-9YI" secondAttribute="height" multiplier="1:1" id="dgr-47-oQm"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Document" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVf-OG-zVv" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1212" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Document" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVf-OG-zVv" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="21.5" y="55" width="56.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                 <color key="textColor" name="black"/>
@@ -1435,7 +1435,7 @@
         <!--Create GroupVC-->
         <scene sceneID="F7p-QA-qjN">
             <objects>
-                <viewController storyboardIdentifier="CreateGroupVC" id="cFs-hX-ucu" customClass="CreateGroupVC" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateGroupVC" id="cFs-hX-ucu" customClass="CreateGroupVC" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YBQ-Th-UCK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1446,7 +1446,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ebx-yR-hcf">
                                         <rect key="frame" x="22.5" y="80" width="330" height="487"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="6018" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE GROUP" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zv-To-Kd4" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="6018" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE GROUP" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zv-To-Kd4" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="20" width="306" height="25"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" name="black"/>
@@ -1494,7 +1494,7 @@
                                                             <constraint firstAttribute="width" secondItem="OTo-Tw-Mrg" secondAttribute="height" multiplier="1:1" id="bGM-xr-2O9"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cBt-QN-4T5" customClass="BHTextField" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cBt-QN-4T5" customClass="BHTextField" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="41" y="0.0" width="164" height="55"/>
                                                         <color key="backgroundColor" name="white"/>
                                                         <constraints>
@@ -1582,7 +1582,7 @@
                                                     <outlet property="delegate" destination="cFs-hX-ucu" id="DIP-Cd-eSW"/>
                                                 </connections>
                                             </tableView>
-                                            <button opaque="NO" tag="1118" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M2-nm-0wq" customClass="BHButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <button opaque="NO" tag="1118" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M2-nm-0wq" customClass="BHButton" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="175" y="419" width="140" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -1599,7 +1599,7 @@
                                                     <action selector="btnCreateClick:" destination="cFs-hX-ucu" eventType="touchUpInside" id="6Yb-2y-vXh"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1218" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgS-Uq-tsI" customClass="BHButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <button opaque="NO" tag="1218" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgS-Uq-tsI" customClass="BHButton" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="419" width="140" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1687,7 +1687,7 @@
         <!--CropperViewController-->
         <scene sceneID="ewP-cM-BGb">
             <objects>
-                <viewController storyboardIdentifier="CropperViewController" automaticallyAdjustsScrollViewInsets="NO" id="m1h-pn-oq8" userLabel="CropperViewController" customClass="CropperViewController" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CropperViewController" automaticallyAdjustsScrollViewInsets="NO" id="m1h-pn-oq8" userLabel="CropperViewController" customClass="CropperViewController" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qif-Pw-gaQ"/>
                         <viewControllerLayoutGuide type="bottom" id="jbd-6K-Pf0"/>
@@ -1823,7 +1823,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ar4-mG-Ugd">
                                                 <rect key="frame" x="10" y="5" width="305" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WHS-Lu-WdM" customClass="BHTextField" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WHS-Lu-WdM" customClass="BHTextField" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="4" y="4" width="297" height="42"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" name="white"/>
@@ -1916,7 +1916,7 @@
         <!--Edit Group Info PopupVC-->
         <scene sceneID="M2h-PC-oRw">
             <objects>
-                <viewController storyboardIdentifier="EditGroupInfoPopupVC" id="cWc-9z-2Ro" customClass="EditGroupInfoPopupVC" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditGroupInfoPopupVC" id="cWc-9z-2Ro" customClass="EditGroupInfoPopupVC" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pBo-qp-j7S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1927,7 +1927,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36e-Fs-20d">
                                         <rect key="frame" x="47.5" y="141" width="280" height="385"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Edit Profile" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ba-xM-rOf" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Edit Profile" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ba-xM-rOf" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="15" width="250" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="7gk-B3-sdA"/>
@@ -1963,7 +1963,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwI-cc-Jde">
                                                 <rect key="frame" x="20" y="220" width="240" height="55"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Group Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZAl-Zx-IZD" customClass="BHTextField" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Group Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZAl-Zx-IZD" customClass="BHTextField" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="55"/>
                                                         <color key="backgroundColor" name="white"/>
                                                         <constraints>
@@ -1984,7 +1984,7 @@
                                                     <constraint firstItem="ZAl-Zx-IZD" firstAttribute="leading" secondItem="FwI-cc-Jde" secondAttribute="leading" id="xwZ-UZ-lTL"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voU-1Y-x9D" customClass="BHButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voU-1Y-x9D" customClass="BHButton" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="147.5" y="305" width="117.5" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2000,7 +2000,7 @@
                                                     <action selector="btnConfirmClick:" destination="cWc-9z-2Ro" eventType="touchUpInside" id="pbF-cN-8y8"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afq-Cl-sT4" customClass="BHButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <button opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afq-Cl-sT4" customClass="BHButton" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="305" width="117.5" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -2073,7 +2073,7 @@
         <!--VideoCropperVC-->
         <scene sceneID="f9B-rx-5kw">
             <objects>
-                <viewController storyboardIdentifier="VideoCropperVC" automaticallyAdjustsScrollViewInsets="NO" id="QoX-Rs-7lp" userLabel="VideoCropperVC" customClass="VideoCropperVC" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoCropperVC" automaticallyAdjustsScrollViewInsets="NO" id="QoX-Rs-7lp" userLabel="VideoCropperVC" customClass="VideoCropperVC" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Ja-Bo-nrT"/>
                         <viewControllerLayoutGuide type="bottom" id="4sf-9k-0GQ"/>
@@ -2145,7 +2145,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn9-Fl-C42">
                                                 <rect key="frame" x="10" y="5" width="305" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JlF-hS-SZU" customClass="BHTextField" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JlF-hS-SZU" customClass="BHTextField" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="4" y="4" width="297" height="42"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" name="white"/>
@@ -2229,10 +2229,10 @@
             </objects>
             <point key="canvasLocation" x="3241" y="7397"/>
         </scene>
-        <!--Attachment ViewVC-->
+        <!--Message Attachment ViewVC-->
         <scene sceneID="o68-2E-7S4">
             <objects>
-                <viewController storyboardIdentifier="AttachmentViewVC" id="2MP-Hf-Zv3" customClass="AttachmentViewVC" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageAttachmentViewVC" id="2MP-Hf-Zv3" customClass="MessageAttachmentViewVC" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vqK-kW-pHy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2256,7 +2256,7 @@
                                                     <action selector="btnBackClick:" destination="2MP-Hf-Zv3" eventType="touchUpInside" id="jNE-98-0OS"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Document" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3f-QU-p2R" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Document" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3f-QU-p2R" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="60" y="17.5" width="91" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                                 <color key="textColor" name="white"/>
@@ -2317,7 +2317,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DS-Bh-1Ty">
                                                 <rect key="frame" x="0.0" y="571" width="375" height="16"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" tag="2216" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy6-WQ-icy" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="2216" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy6-WQ-icy" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="8" width="355" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" name="white"/>
@@ -2350,7 +2350,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
                                                 <color key="backgroundColor" name="black"/>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoadMore" translatesAutoresizingMaskIntoConstraints="NO" id="L0i-p5-SEx" customClass="LoaderView" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoadMore" translatesAutoresizingMaskIntoConstraints="NO" id="L0i-p5-SEx" customClass="LoaderView" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="167.5" y="273.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="JIt-6e-X8O"/>
@@ -2539,7 +2539,7 @@
         <!--Message ListVC-->
         <scene sceneID="GPe-LP-E19">
             <objects>
-                <viewController storyboardIdentifier="MessageListVC" id="JIg-tF-3cC" customClass="MessageListVC" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageListVC" id="JIg-tF-3cC" customClass="MessageListVC" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Xr-XL-OUZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2563,7 +2563,7 @@
                                                     <action selector="btnBackClick:" destination="JIg-tF-3cC" eventType="touchUpInside" id="Z3u-Fm-jJd"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azU-MT-gPh" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azU-MT-gPh" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="60" y="17.5" width="78" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                                 <color key="textColor" name="white"/>
@@ -2681,7 +2681,7 @@
         <!--MessageVC-->
         <scene sceneID="gK3-E5-0m6">
             <objects>
-                <viewController storyboardIdentifier="MessageVC" id="mvR-BU-m4b" customClass="MessageVC" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageVC" id="mvR-BU-m4b" customClass="MessageVC" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mpY-nK-w7a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2714,7 +2714,7 @@
                                                     <constraint firstAttribute="width" secondItem="syM-Ge-TQK" secondAttribute="height" multiplier="1:1" id="piF-gt-CJe"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-B7-TZl" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-B7-TZl" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                 <rect key="frame" x="115" y="17.5" width="190" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                                 <color key="textColor" name="white"/>
@@ -2803,7 +2803,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Hbz-C8-pNg">
                                                                         <rect key="frame" x="0.0" y="0.0" width="112" height="56"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHk-N0-oQ9" customClass="CustomButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHk-N0-oQ9" customClass="CustomButton" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="qHk-N0-oQ9" secondAttribute="height" multiplier="1:1" id="QYH-n8-5ff"/>
@@ -2816,7 +2816,7 @@
                                                                                     <action selector="btnPauseRecordedAudioClick:" destination="mvR-BU-m4b" eventType="touchUpInside" id="Mur-kf-cJn"/>
                                                                                 </connections>
                                                                             </button>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndE-Y3-wzQ" customClass="CustomButton" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndE-Y3-wzQ" customClass="CustomButton" customModule="Communication" customModuleProvider="target">
                                                                                 <rect key="frame" x="56" y="0.0" width="56" height="56"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="ndE-Y3-wzQ" secondAttribute="height" multiplier="1:1" priority="999" id="y0S-ic-qEz"/>
@@ -2905,7 +2905,7 @@
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
-                                                                    <textField opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qai-8L-q6H" customClass="BHTextField" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                    <textField opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qai-8L-q6H" customClass="BHTextField" customModule="Communication" customModuleProvider="target">
                                                                         <rect key="frame" x="66" y="2" width="67" height="52"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="textColor" name="white"/>
@@ -2915,7 +2915,7 @@
                                                                             <outlet property="delegate" destination="mvR-BU-m4b" id="x55-2g-2Aw"/>
                                                                         </connections>
                                                                     </textField>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Axs-ZJ-gl0" customClass="BHLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="2118" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Axs-ZJ-gl0" customClass="BHLabel" customModule="Communication" customModuleProvider="target">
                                                                         <rect key="frame" x="25" y="15.5" width="48" height="25"/>
                                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                                         <color key="textColor" name="white"/>
@@ -3065,7 +3065,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rx4-Hn-Ofc">
                                 <rect key="frame" x="0.0" y="667" width="375" height="47"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="1016" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83O-8n-dn8" customClass="IPLabel" customModule="AKImageCropperView" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1016" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83O-8n-dn8" customClass="IPLabel" customModule="Communication" customModuleProvider="target">
                                         <rect key="frame" x="185" y="15" width="5.5" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <color key="textColor" name="black"/>
@@ -3199,7 +3199,7 @@
         <!--VideoCropperVC2-->
         <scene sceneID="LPK-tU-vwj">
             <objects>
-                <viewController storyboardIdentifier="VideoCropperVC2" automaticallyAdjustsScrollViewInsets="NO" id="BQF-rY-dP4" userLabel="VideoCropperVC2" customClass="VideoCropperVC2" customModule="AKImageCropperView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoCropperVC2" automaticallyAdjustsScrollViewInsets="NO" id="BQF-rY-dP4" userLabel="VideoCropperVC2" customClass="VideoCropperVC2" customModule="Communication" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RHo-Sn-rgv"/>
                         <viewControllerLayoutGuide type="bottom" id="u4j-h3-H51"/>
@@ -3278,7 +3278,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcE-3X-eHc">
                                                 <rect key="frame" x="10" y="5" width="305" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MM8-Bh-kcz" customClass="BHTextField" customModule="AKImageCropperView" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MM8-Bh-kcz" customClass="BHTextField" customModule="Communication" customModuleProvider="target">
                                                         <rect key="frame" x="4" y="4" width="297" height="42"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" name="white"/>

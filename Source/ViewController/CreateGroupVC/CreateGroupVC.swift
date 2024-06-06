@@ -17,14 +17,14 @@ class CreateGroupVC: UIViewController {
     @IBOutlet weak var viewCenterBG: UIView!
     @IBOutlet weak var viewCenterBGWidth: NSLayoutConstraint!
     
-    @IBOutlet weak var lblTitle: BHLabel!
+    @IBOutlet weak var lblTitle: BMLabel!
     
     @IBOutlet weak var viewGroupPic: UIView!
     @IBOutlet weak var imgGroupPic: UIImageView!
     @IBOutlet weak var btnGroupPic: UIButton!
     
     @IBOutlet weak var viewGroupName: UIView!
-    @IBOutlet weak var txtGroupName: BHTextField!
+    @IBOutlet weak var txtGroupName: BMTextField!
     
     @IBOutlet weak var viewSelectedClient: UIView!
     @IBOutlet weak var collSelectedClient: UICollectionView!
@@ -35,8 +35,8 @@ class CreateGroupVC: UIViewController {
     @IBOutlet weak var tblClientList: UITableView!
     @IBOutlet weak var tblClientListHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var btnCreate: BHButton!
-    @IBOutlet weak var btnCancel: BHButton!
+    @IBOutlet weak var btnCreate: BMButton!
+    @IBOutlet weak var btnCancel: BMButton!
     
     // MARK: 
     // MARK: VARIABLE
@@ -211,7 +211,7 @@ class CreateGroupVC: UIViewController {
             self.showLoader()
             
             let strGroupImageName = MessageManager.shared.generateImageName(strTag: "Conversation", strExtention: "jpg")
-            BHAzure.uploadImageToAzure(strImageName: strGroupImageName, imgSignature: self.imgGroupPic.image!, completion: { success, error in
+            BMAzure.uploadImageToAzure(strImageName: strGroupImageName, imgSignature: self.imgGroupPic.image!, completion: { success, error in
                 self.hideLoader()
                 if success {
                     self.strGroupImage = strGroupImageName

@@ -26,7 +26,7 @@ final class CropperViewController: UIViewController {
     
     @IBOutlet weak var viewMessageBG: UIView!
     @IBOutlet weak var viewMessage: UIView!
-    @IBOutlet weak var txtMessage: BHTextField!
+    @IBOutlet weak var txtMessage: BMTextField!
     @IBOutlet weak var btnSendMessage: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     

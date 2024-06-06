@@ -15,16 +15,16 @@ class EditGroupInfoPopupVC: UIViewController {
     @IBOutlet weak var viewMainBG: UIView!
     
     @IBOutlet weak var viewEditProfile: UIView!
-    @IBOutlet weak var lblEditProfile: BHLabel!
+    @IBOutlet weak var lblEditProfile: BMLabel!
     
     @IBOutlet weak var imgGroupProfilePic: UIImageView!
     @IBOutlet weak var btnEditGroupProfilePic: UIButton!
     
     @IBOutlet weak var viewGroupName: UIView!
-    @IBOutlet weak var txtGroupName: BHTextField!
+    @IBOutlet weak var txtGroupName: BMTextField!
     
-    @IBOutlet weak var btnCancel: BHButton!
-    @IBOutlet weak var btnOk: BHButton!
+    @IBOutlet weak var btnCancel: BMButton!
+    @IBOutlet weak var btnOk: BMButton!
     
     @IBOutlet weak var viewCenterBGWidth: NSLayoutConstraint!
     
@@ -68,7 +68,7 @@ class EditGroupInfoPopupVC: UIViewController {
                 }
             }
             else{
-                BHAzure.loadDataFromAzure(clientSignature: self.strGroupImageName) { success, error, data in
+                BMAzure.loadDataFromAzure(clientSignature: self.strGroupImageName) { success, error, data in
                     if success && data != nil {
                         MessageManager.shared.saveFileToDirectory(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: self.strGroupImageName, fileData: data!)
                         DispatchQueue.main.async {
@@ -202,7 +202,7 @@ class EditGroupInfoPopupVC: UIViewController {
         self.showLoader()
         
         let strGroupImageName = MessageManager.shared.generateImageName(strTag: "Conversation", strExtention: "jpg")
-        BHAzure.uploadImageToAzure(strImageName: strGroupImageName, imgSignature: self.imgGroupProfilePic.image!, completion: { success, error in
+        BMAzure.uploadImageToAzure(strImageName: strGroupImageName, imgSignature: self.imgGroupProfilePic.image!, completion: { success, error in
             self.hideLoader()
             if success {
                 if self.strOldGroupImageName != ""{

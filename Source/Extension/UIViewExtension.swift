@@ -29,14 +29,14 @@ extension UIView {
     }
     
     func setShadow(){
-        self.layer.shadowColor = AppTheme.Color.lightGray.cgColor
+        self.layer.shadowColor = MessageTheme.Color.lightGray.cgColor
         self.layer.shadowOffset = CGSize(width: 20, height: 20)
         self.layer.shadowOpacity = 1
         self.layer.shadowRadius = 20
     }
     
     func setSketchShadow(){
-        self.layer.applySketchShadow(color: AppTheme.Color.lightGray,
+        self.layer.applySketchShadow(color: MessageTheme.Color.lightGray,
                                      alpha: 1.0,
                                            x: 0,
                                            y: 2,

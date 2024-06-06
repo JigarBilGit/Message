@@ -12,9 +12,9 @@ import UIKit
 class UserListCell: UITableViewCell {
     @IBOutlet weak var viewCellBg: UIView!
     @IBOutlet weak var imgProfilePic: UIImageView!
-    @IBOutlet weak var lblUserName: BHLabel!
+    @IBOutlet weak var lblUserName: BMLabel!
     @IBOutlet weak var viewIsAdmin: UIView!
-    @IBOutlet weak var lblIsAdmin: BHLabel!
+    @IBOutlet weak var lblIsAdmin: BMLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

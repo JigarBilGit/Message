@@ -30,38 +30,38 @@ class MessageProfileVC: UIViewController {
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var imgEmployeePic: UIImageView!
     @IBOutlet weak var btnEditProfile: UIButton!
-    @IBOutlet weak var lblName: BHLabel!
-    @IBOutlet weak var lblDescription: BHLabel!
+    @IBOutlet weak var lblName: BMLabel!
+    @IBOutlet weak var lblDescription: BMLabel!
         
     @IBOutlet weak var viewBottomInfoBG: UIView!
     
     @IBOutlet weak var viewProfileInfo: UIView!
-    @IBOutlet weak var lblProfile1: BHLabel!
-    @IBOutlet weak var lblUserName: BHLabel!
-    @IBOutlet weak var lblUserNameValue: BHLabel!
-    @IBOutlet weak var lblEmail: BHLabel!
-    @IBOutlet weak var lblEmailValue: BHLabel!
-    @IBOutlet weak var lblJobTitle: BHLabel!
-    @IBOutlet weak var lblJobTitleValue: BHLabel!
-    @IBOutlet weak var lblContactNumber: BHLabel!
-    @IBOutlet weak var lblContactNumberValue: BHLabel!
+    @IBOutlet weak var lblProfile1: BMLabel!
+    @IBOutlet weak var lblUserName: BMLabel!
+    @IBOutlet weak var lblUserNameValue: BMLabel!
+    @IBOutlet weak var lblEmail: BMLabel!
+    @IBOutlet weak var lblEmailValue: BMLabel!
+    @IBOutlet weak var lblJobTitle: BMLabel!
+    @IBOutlet weak var lblJobTitleValue: BMLabel!
+    @IBOutlet weak var lblContactNumber: BMLabel!
+    @IBOutlet weak var lblContactNumberValue: BMLabel!
     
     @IBOutlet weak var viewOtherProfileInfo: UIView!
-    @IBOutlet weak var lblProfile2: BHLabel!
+    @IBOutlet weak var lblProfile2: BMLabel!
     @IBOutlet weak var viewFullName: UIView!
-    @IBOutlet weak var lblFullName: BHLabel!
-    @IBOutlet weak var lblFullNameValue: BHLabel!
+    @IBOutlet weak var lblFullName: BMLabel!
+    @IBOutlet weak var lblFullNameValue: BMLabel!
     @IBOutlet weak var viewTelephone: UIView!
-    @IBOutlet weak var lblTelephone: BHLabel!
-    @IBOutlet weak var lblTelephoneValue: BHLabel!
+    @IBOutlet weak var lblTelephone: BMLabel!
+    @IBOutlet weak var lblTelephoneValue: BMLabel!
     @IBOutlet weak var viewMessage: UIView!
-    @IBOutlet weak var lblMessage: BHLabel!
-    @IBOutlet weak var lblMessageValue: BHLabel!
+    @IBOutlet weak var lblMessage: BMLabel!
+    @IBOutlet weak var lblMessageValue: BMLabel!
     @IBOutlet weak var btnMessage: UIButton!
     
     @IBOutlet weak var viewGroupInfo: UIView!
-    @IBOutlet weak var lblGroupInfo: BHLabel!
-    @IBOutlet weak var lblUsers: BHLabel!
+    @IBOutlet weak var lblGroupInfo: BMLabel!
+    @IBOutlet weak var lblUsers: BMLabel!
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var viewGroupUserList: UIView!
     @IBOutlet weak var tblGroupUserList: UITableView!
@@ -77,7 +77,7 @@ class MessageProfileVC: UIViewController {
     @IBOutlet weak var btnDismissOptionPopup: UIButton!
     @IBOutlet weak var viewTopOptionPopup: UIView!
     @IBOutlet weak var imgSelectedEmployeePic: UIImageView!
-    @IBOutlet weak var lblSelectedEmployeeName: BHLabel!
+    @IBOutlet weak var lblSelectedEmployeeName: BMLabel!
     @IBOutlet weak var btnDismissOptionPopup2: UIButton!
     @IBOutlet weak var viewOptionPopup: UIView!
     @IBOutlet weak var tblOptionPopup: UITableView!
@@ -89,22 +89,22 @@ class MessageProfileVC: UIViewController {
     @IBOutlet weak var viewTopBGPopup: UIView!
     @IBOutlet weak var btnBackPopup: UIButton!
     @IBOutlet weak var imgEmployeePicPopup: UIImageView!
-    @IBOutlet weak var lblNamePopup: BHLabel!
-    @IBOutlet weak var lblDescriptionPopup: BHLabel!
+    @IBOutlet weak var lblNamePopup: BMLabel!
+    @IBOutlet weak var lblDescriptionPopup: BMLabel!
     
     @IBOutlet weak var viewBottomInfoBGPopup: UIView!
     
     @IBOutlet weak var viewOtherProfileInfoPopup: UIView!
-    @IBOutlet weak var lblProfile2Popup: BHLabel!
+    @IBOutlet weak var lblProfile2Popup: BMLabel!
     @IBOutlet weak var viewFullNamePopup: UIView!
-    @IBOutlet weak var lblFullNamePopup: BHLabel!
-    @IBOutlet weak var lblFullNameValuePopup: BHLabel!
+    @IBOutlet weak var lblFullNamePopup: BMLabel!
+    @IBOutlet weak var lblFullNameValuePopup: BMLabel!
     @IBOutlet weak var viewTelephonePopup: UIView!
-    @IBOutlet weak var lblTelephonePopup: BHLabel!
-    @IBOutlet weak var lblTelephoneValuePopup: BHLabel!
+    @IBOutlet weak var lblTelephonePopup: BMLabel!
+    @IBOutlet weak var lblTelephoneValuePopup: BMLabel!
     @IBOutlet weak var viewMessagePopup: UIView!
-    @IBOutlet weak var lblMessagePopup: BHLabel!
-    @IBOutlet weak var lblMessageValuePopup: BHLabel!
+    @IBOutlet weak var lblMessagePopup: BMLabel!
+    @IBOutlet weak var lblMessageValuePopup: BMLabel!
     @IBOutlet weak var btnMessagePopup: UIButton!
     
     // MARK: - 
@@ -344,7 +344,7 @@ class MessageProfileVC: UIViewController {
                 }
             }
             else{
-                BHAzure.loadDataFromAzure(clientSignature: strPicName) { success, error, data in
+                BMAzure.loadDataFromAzure(clientSignature: strPicName) { success, error, data in
                     if success && data != nil {
                         MessageManager.shared.saveFileToDirectory(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: strPicName, fileData: data!)
                         DispatchQueue.main.async {
@@ -375,7 +375,7 @@ class MessageProfileVC: UIViewController {
                     }
                 }
                 else{
-                    BHAzure.loadDataFromAzure(clientSignature: arrEmployees[0].photo) { success, error, data in
+                    BMAzure.loadDataFromAzure(clientSignature: arrEmployees[0].photo) { success, error, data in
                         if success && data != nil {
                             MessageManager.shared.saveFileToDirectory(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: arrEmployees[0].photo, fileData: data!)
                             DispatchQueue.main.async {
@@ -827,7 +827,7 @@ extension MessageProfileVC : UITableViewDelegate,UITableViewDataSource {
             }
             else if self.arrUserList[indexPath.row].userTag == UserTypeTag.LeaveGroup.rawValue{
                 DispatchQueue.main.async {
-                    _ = BHAlertVC.init(title:  "keyAlert".localize, message: "lblLeaveChatValidation".localize, rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
+                    _ = BMAlertVC.init(title:  "keyAlert".localize, message: "lblLeaveChatValidation".localize, rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
                         if actionType == .right {
                             if MessageManager.shared.isNetConnected{
                                 MessageManager.shared.call_LeaveConvesationAPI(employeeConversationId: self.objConversation.employeeConversationId, showLoader: true) { isSuccess in
@@ -937,7 +937,7 @@ extension MessageProfileVC : UITableViewDelegate,UITableViewDataSource {
             if self.selectedUserTag == UserTypeTag.Own.rawValue{
                 if self.isSelfAdmin{
                     DispatchQueue.main.async {
-                        _ = BHAlertVC.init(title: "keyAlert".localize, message: "\("lblResignAsAdmin".localize)?", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
+                        _ = BMAlertVC.init(title: "keyAlert".localize, message: "\("lblResignAsAdmin".localize)?", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
                             if actionType == .right {
                                 self.dismissOptionView()
                                 if MessageManager.shared.isNetConnected{
@@ -981,7 +981,7 @@ extension MessageProfileVC : UITableViewDelegate,UITableViewDataSource {
                     else{
                         if self.isSelectedEmployeeAdmin{
                             DispatchQueue.main.async {
-                                _ = BHAlertVC.init(title: "keyAlert".localize, message: "\("lblDismiss".localize) \(self.selectedEmployeeName) \("lblAsGroupAdmin".localize)", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
+                                _ = BMAlertVC.init(title: "keyAlert".localize, message: "\("lblDismiss".localize) \(self.selectedEmployeeName) \("lblAsGroupAdmin".localize)", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
                                     if actionType == .right {
                                         self.dismissOptionView()
                                         if MessageManager.shared.isNetConnected{
@@ -999,7 +999,7 @@ extension MessageProfileVC : UITableViewDelegate,UITableViewDataSource {
                         }
                         else{
                             DispatchQueue.main.async {
-                                _ = BHAlertVC.init(title: "keyAlert".localize, message: "\("lblRemove".localize) \(self.selectedEmployeeName) \("lblFrom".localize) \(self.objConversation.conversationName) \("lblGroup2".localize)", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
+                                _ = BMAlertVC.init(title: "keyAlert".localize, message: "\("lblRemove".localize) \(self.selectedEmployeeName) \("lblFrom".localize) \(self.objConversation.conversationName) \("lblGroup2".localize)", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
                                     if actionType == .right {
                                         self.dismissOptionView()
                                         if MessageManager.shared.isNetConnected{
@@ -1035,7 +1035,7 @@ extension MessageProfileVC : UITableViewDelegate,UITableViewDataSource {
                     }
                     else{
                         DispatchQueue.main.async {
-                            _ = BHAlertVC.init(title: "keyAlert".localize, message: "\("lblRemove".localize) \(self.selectedEmployeeName) \("lblFrom".localize) \(self.objConversation.conversationName) \("lblGroup2".localize)", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
+                            _ = BMAlertVC.init(title: "keyAlert".localize, message: "\("lblRemove".localize) \(self.selectedEmployeeName) \("lblFrom".localize) \(self.objConversation.conversationName) \("lblGroup2".localize)", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
                                 if actionType == .right {
                                     self.dismissOptionView()
                                     if MessageManager.shared.isNetConnected{
@@ -1055,7 +1055,7 @@ extension MessageProfileVC : UITableViewDelegate,UITableViewDataSource {
                 }
                 else if indexPath.row == 2{
                     DispatchQueue.main.async {
-                        _ = BHAlertVC.init(title: "keyAlert".localize, message: "\("lblMake".localize) \(self.selectedEmployeeName) \("lblGroupAdmin".localize)", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
+                        _ = BMAlertVC.init(title: "keyAlert".localize, message: "\("lblMake".localize) \(self.selectedEmployeeName) \("lblGroupAdmin".localize)", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
                             if actionType == .right {
                                 self.dismissOptionView()
                                 if MessageManager.shared.isNetConnected{
@@ -1125,7 +1125,7 @@ extension MessageProfileVC : CropViewControllerDelegate {
             let strProfilePicName = MessageManager.shared.generateImageName(strTag: "Employee", strExtention: "jpg")
             if MessageManager.shared.isNetConnected{
                 self.showLoader()
-                BHAzure.uploadImageToAzure(strImageName: strProfilePicName, imgSignature: image) { (success, error) in
+                BMAzure.uploadImageToAzure(strImageName: strProfilePicName, imgSignature: image) { (success, error) in
                     self.hideLoader()
                     if success {
                         MessageManager().delay(delay: 0.2) {
@@ -1141,9 +1141,8 @@ extension MessageProfileVC : CropViewControllerDelegate {
                 self.imgEmployeePic.layer.cornerRadius = self.imgEmployeePic.height / 2.0
                 self.imgEmployeePic.layer.masksToBounds = true
                 self.imgEmployeePic.contentMode = .scaleAspectFill
-                
 
-                _ = BHAlertVC.init(title:"keySuccess".localize, message: "Profile picture uploaded successfully.", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "") { success, actionType in
+                _ = BMAlertVC.init(title:"keySuccess".localize, message: "Profile picture uploaded successfully.", rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "") { success, actionType in
                     if actionType == .right {
                         let uploadImageData = tblSyncImage()
                         uploadImageData.primaryId = "\(self.employeeId)"

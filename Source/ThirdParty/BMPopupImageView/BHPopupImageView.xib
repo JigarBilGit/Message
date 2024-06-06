@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BHPopupImageView" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+            <connections>
+                <outlet property="btnCancel" destination="rkS-P3-AKA" id="YSh-gV-rzd"/>
+                <outlet property="imageScrollView" destination="kJ4-dF-tXB" id="ulB-BI-ObQ"/>
+                <outlet property="parentView" destination="iN0-l3-epB" id="V8I-Lj-xWe"/>
+                <outlet property="popupView" destination="yKG-6g-YrU" id="QrM-PM-S0y"/>
+                <outlet property="popupViewHeight" destination="tlR-13-sFe" id="Hcm-DN-doq"/>
+                <outlet property="popupViewWidth" destination="fFu-te-Bec" id="iHx-2Z-hF1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgd-t2-epX">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEq-yA-daD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-6g-YrU">
+                            <rect key="frame" x="-126.5" y="212.5" width="628" height="242"/>
+                            <subviews>
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJ4-dF-tXB" customClass="BHImageScrollView" customModule="BilliyoClinicalPDN" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="628" height="242"/>
+                                </scrollView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="kJ4-dF-tXB" firstAttribute="leading" secondItem="yKG-6g-YrU" secondAttribute="leading" id="12w-Hf-WJk"/>
+                                <constraint firstAttribute="bottom" secondItem="kJ4-dF-tXB" secondAttribute="bottom" id="dYh-lq-ztG"/>
+                                <constraint firstAttribute="width" constant="628" id="fFu-te-Bec"/>
+                                <constraint firstItem="kJ4-dF-tXB" firstAttribute="top" secondItem="yKG-6g-YrU" secondAttribute="top" id="fww-tB-FQH"/>
+                                <constraint firstAttribute="height" constant="242" id="tlR-13-sFe"/>
+                                <constraint firstAttribute="trailing" secondItem="kJ4-dF-tXB" secondAttribute="trailing" id="wgc-9J-gmJ"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkS-P3-AKA">
+                            <rect key="frame" x="481.5" y="191" width="43.5" height="43.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="rkS-P3-AKA" secondAttribute="height" multiplier="1:1" id="3wu-eo-qIV"/>
+                            </constraints>
+                            <color key="tintColor" name="defaultRed"/>
+                            <state key="normal">
+                                <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="large" renderingMode="template"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                            </state>
+                            <connections>
+                                <action selector="clickOnCancel:" destination="-1" eventType="touchUpInside" id="Rw8-ID-XZF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="yKG-6g-YrU" firstAttribute="centerY" secondItem="OEq-yA-daD" secondAttribute="centerY" id="BtR-9e-Pt9"/>
+                        <constraint firstItem="rkS-P3-AKA" firstAttribute="leading" secondItem="kJ4-dF-tXB" secondAttribute="trailing" constant="-20" id="axh-xN-dTY"/>
+                        <constraint firstItem="yKG-6g-YrU" firstAttribute="centerX" secondItem="OEq-yA-daD" secondAttribute="centerX" id="e8e-Cy-ZJi"/>
+                        <constraint firstItem="yKG-6g-YrU" firstAttribute="centerY" secondItem="OEq-yA-daD" secondAttribute="centerY" id="g5v-Fi-fAQ"/>
+                        <constraint firstItem="kJ4-dF-tXB" firstAttribute="top" secondItem="rkS-P3-AKA" secondAttribute="bottom" constant="-22" id="pE5-S1-jIT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="OEq-yA-daD" secondAttribute="bottom" id="3Pc-xV-TCd"/>
+                <constraint firstItem="bgd-t2-epX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3ok-qY-WLN"/>
+                <constraint firstItem="bgd-t2-epX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="3sr-PD-ksU"/>
+                <constraint firstItem="OEq-yA-daD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="D0o-Fn-LHq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bgd-t2-epX" secondAttribute="bottom" id="FSA-rW-fj6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OEq-yA-daD" secondAttribute="trailing" id="Jql-Qb-atZ"/>
+                <constraint firstItem="OEq-yA-daD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UIJ-DB-cjh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bgd-t2-epX" secondAttribute="trailing" id="cID-mW-xpi"/>
+            </constraints>
+            <point key="canvasLocation" x="137.5" y="121.87499999999999"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="defaultRed">
+            <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

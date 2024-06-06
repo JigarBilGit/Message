@@ -28,7 +28,7 @@ final class VideoCropperVC2: UIViewController {
     
     @IBOutlet weak var viewMessageBG: UIView!
     @IBOutlet weak var viewMessage: UIView!
-    @IBOutlet weak var txtMessage: BHTextField!
+    @IBOutlet weak var txtMessage: BMTextField!
     @IBOutlet weak var btnSendMessage: UIButton!
     
     // MARK: - 

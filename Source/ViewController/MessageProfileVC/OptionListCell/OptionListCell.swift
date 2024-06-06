@@ -12,7 +12,7 @@ import UIKit
 class OptionListCell: UITableViewCell {
     @IBOutlet weak var viewCellBg: UIView!
     @IBOutlet weak var imgOption: UIImageView!
-    @IBOutlet weak var lblOption: BHLabel!
+    @IBOutlet weak var lblOption: BMLabel!
     @IBOutlet weak var lblSeprator: UILabel!
     
     override func awakeFromNib() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SenderImageCell: MGSwipeTableCell {
+class SenderImageCell: UITableViewCell {
     @IBOutlet weak var viewMessage: UIView!
     @IBOutlet weak var viewUserName: UIView!
     @IBOutlet weak var lblUserName: BMLabel!

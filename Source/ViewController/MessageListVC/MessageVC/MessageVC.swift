@@ -45,7 +45,7 @@ class MessageVC: UIViewController {
     @IBOutlet weak var viewAudioPlayBGHeight: NSLayoutConstraint!
     
     @IBOutlet weak var viewMessageTypeBG: UIView!
-    @IBOutlet weak var txtMessage: BHTextField!
+    @IBOutlet weak var txtMessage: BMTextField!
     @IBOutlet weak var btnAttachment: UIButton!
     @IBOutlet weak var btnAudioRecord: UIButton!
     @IBOutlet weak var btnConfirm: UIButton!
@@ -285,7 +285,7 @@ class MessageVC: UIViewController {
                 }
             }
             else{
-                BHAzure.loadDataFromAzure(clientSignature: self.objConversation.conversationImage) { success, error, data in
+                BMAzure.loadDataFromAzure(clientSignature: self.objConversation.conversationImage) { success, error, data in
                     if success && data != nil {
                         MessageManager.shared.saveFileToDirectory(strFolderName: DirectoryFolder.ConversationList.rawValue, strFileName: self.objConversation.conversationImage, fileData: data!)
                         DispatchQueue.main.async {
@@ -324,7 +324,7 @@ class MessageVC: UIViewController {
             self.loadMessageDetails(isFirstCall: true)
         }
         
-        APP_DELEGATE.hubConnectionConversation.on(method: "\(self.objConversation.conversationId)", callback: { (payload: ArgumentExtractor?) in
+        MessageManager.shared.hubConnectionConversation.on(method: "\(self.objConversation.conversationId)", callback: { (payload: ArgumentExtractor?) in
             do{
                 print("Received Message Response.")
                 let response = try payload?.getArgument(type: Arguments.self)
@@ -405,9 +405,9 @@ class MessageVC: UIViewController {
     @IBAction func btnBackClick(_ sender: Any) {
         self.view.endEditing(true)
         
-        APP_DELEGATE.hubConnectionConversation.stop()
+        MessageManager.shared.hubConnectionConversation.stop()
         
-        APP_DELEGATE.setupCommunicationListener()
+        MessageManager.shared.setupCommunicationListener()
         
         _ = tblMessages().updateDownloadingFlagForFullConversation(isDownloading: 0, employeeConversationId: self.objConversation.employeeConversationId)
         
@@ -421,8 +421,8 @@ class MessageVC: UIViewController {
         objMessageProfileVC.objConversation = self.objConversation
         objMessageProfileVC.setRedirectionHandler = {(isCancel, employeeConversationId, conversationData) in
             if !isCancel{
-                APP_DELEGATE.hubConnectionConversation.stop()
-                APP_DELEGATE.setupCommunicationListener()
+                MessageManager.shared.hubConnectionConversation.stop()
+                MessageManager.shared.setupCommunicationListener()
                 
                 self.objConversation = conversationData
                 self.setMessageData()
@@ -438,7 +438,7 @@ class MessageVC: UIViewController {
         
         let arrMenuImage : [UIImage] = [#imageLiteral(resourceName: "imgInfo"), #imageLiteral(resourceName: "imgLeave")]
         
-        let config = BIConfiguration()
+        let config = BMConfiguration()
         config.backgoundTintColor = MessageTheme.Color.white
         config.borderColor = MessageTheme.Color.lightGray
         config.globalShadow = true
@@ -450,7 +450,7 @@ class MessageVC: UIViewController {
         config.textFont = UIFont(name: MessageTheme.Font.avenirMedium, size: MessageConstant.is_Device._iPhone ? MessageTheme.Size.Size_14 : MessageTheme.Size.Size_20) ?? UIFont.systemFont(ofSize: 14)
         config.textColor = MessageTheme.Color.black
         
-        BIPopOverMenu.showForSender(sender: sender,
+        BMPopOverMenu.showForSender(sender: sender,
                                     with: arrMenuName,
                                     menuImageArray: arrMenuImage,
                                     popOverPosition: .automatic,
@@ -462,8 +462,8 @@ class MessageVC: UIViewController {
                 objMessageProfileVC.objConversation = self.objConversation
                 objMessageProfileVC.setRedirectionHandler = {(isCancel, employeeConversationId, conversationData) in
                     if !isCancel{
-                        APP_DELEGATE.hubConnectionConversation.stop()
-                        APP_DELEGATE.setupCommunicationListener()
+                        MessageManager.shared.hubConnectionConversation.stop()
+                        MessageManager.shared.setupCommunicationListener()
                         
                         self.objConversation = conversationData
                         self.setMessageData()
@@ -473,7 +473,7 @@ class MessageVC: UIViewController {
             }
             else if selectedIndex == 1{
                 DispatchQueue.main.async {
-                    _ = BHAlertVC.init(title:"", message: "lblLeaveChatValidation".localize, rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
+                    _ = BMAlertVC.init(title:"", message: "lblLeaveChatValidation".localize, rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
                         if actionType == .right {
                             if MessageManager.shared.isNetConnected{
                                 MessageManager.shared.call_LeaveConvesationAPI(employeeConversationId: self.objConversation.employeeConversationId, showLoader: true) { isSuccess in
@@ -594,7 +594,7 @@ class MessageVC: UIViewController {
                         }
                         else{
                             DispatchQueue.main.async {
-                                _ = BHAlertVC.init(title:"keyAlert".localize, message: "KeyPhotoPermissionMessage".localize, rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
+                                _ = BMAlertVC.init(title:"keyAlert".localize, message: "KeyPhotoPermissionMessage".localize, rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
                                     if actionType == .right {
                                         UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                                     }
@@ -916,7 +916,7 @@ class MessageVC: UIViewController {
         if arrMessageData.count > 0{
             if arrMessageData[0].messageAttachment != ""{
                 if let attachmentData = MessageManager.shared.getFileDataFromDirectory(strFolderName: "\(DirectoryFolder.ChatAttachment.rawValue)/\(self.objConversation.conversationId)", strFileName: arrMessageData[0].messageAttachment){
-                    BHAzure.uploadAttachmentDataToAzure(mobilePrimaryKey: arrMessageData[0].mobilePrimaryKey, containerName: "\(MessageManager.shared.timiroCode)/\(DirectoryFolder.Communication.rawValue)", strFileName: arrMessageData[0].messageAttachment, fileData: attachmentData, resourceId: Int(self.objConversation.employeeConversationId), strResourceType: "MessageAttachment", completion: {
+                    BMAzure.uploadAttachmentDataToAzure(mobilePrimaryKey: arrMessageData[0].mobilePrimaryKey, containerName: "\(MessageManager.shared.timiroCode)/\(DirectoryFolder.Communication.rawValue)", strFileName: arrMessageData[0].messageAttachment, fileData: attachmentData, resourceId: Int(self.objConversation.employeeConversationId), strResourceType: "MessageAttachment", completion: {
                         (success, mobilePrimaryKey)  in
                         if success{
                             DispatchQueue.main.async {
@@ -1010,7 +1010,7 @@ class MessageVC: UIViewController {
             self.tblMessage.reloadData()
         }
         
-        BHAzure.uploadAttachmentDataToAzure(mobilePrimaryKey: mobilePrimaryKey, containerName: "\(MessageManager.shared.timiroCode)/\(DirectoryFolder.Communication.rawValue)", strFileName: messageAttachment, fileData: attachmentData, resourceId: Int(self.objConversation.employeeConversationId), strResourceType: "MessageAttachment", completion: {
+        BMAzure.uploadAttachmentDataToAzure(mobilePrimaryKey: mobilePrimaryKey, containerName: "\(MessageManager.shared.timiroCode)/\(DirectoryFolder.Communication.rawValue)", strFileName: messageAttachment, fileData: attachmentData, resourceId: Int(self.objConversation.employeeConversationId), strResourceType: "MessageAttachment", completion: {
             (success, mobilePrimaryKey)  in
             if success{
                 DispatchQueue.main.async {
@@ -1344,7 +1344,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1365,7 +1364,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1426,7 +1424,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1470,7 +1467,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1537,7 +1533,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1583,7 +1578,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1658,7 +1652,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1712,7 +1705,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1797,7 +1789,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1863,7 +1854,6 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                         let interaction = UIContextMenuInteraction(delegate: self)
                         cell.viewMessageBG.addInteraction(interaction)
                         
-                        cell.delegate = self
                         cell.tag = indexPath.row
                         cell.intSection = indexPath.section
                         cell.intRow = indexPath.row
@@ -1930,7 +1920,7 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
             if indexPath.section == 0 && indexPath.row == 0{
                 if MessageManager.shared.checkFileExist(strFolderName: "\(DirectoryFolder.ChatAttachment.rawValue)/\(self.objConversation.conversationId)", strFileName: self.selectedMessageData.messageAttachment) && self.selectedMessageData.messageAttachment != ""{
                     if let attachmentData = MessageManager.shared.getFileDataFromDirectory(strFolderName: "\(DirectoryFolder.ChatAttachment.rawValue)/\(self.objConversation.conversationId)", strFileName: self.selectedMessageData.messageAttachment){
-                        BHAzure.uploadAttachmentDataToAzure(mobilePrimaryKey: self.selectedMessageData.mobilePrimaryKey, containerName: "\(MessageManager.shared.timiroCode)/\(DirectoryFolder.Communication.rawValue)", strFileName: self.selectedMessageData.messageAttachment, fileData: attachmentData, resourceId: Int(self.objConversation.employeeConversationId), strResourceType: "MessageAttachment", completion: {
+                        BMAzure.uploadAttachmentDataToAzure(mobilePrimaryKey: self.selectedMessageData.mobilePrimaryKey, containerName: "\(MessageManager.shared.timiroCode)/\(DirectoryFolder.Communication.rawValue)", strFileName: self.selectedMessageData.messageAttachment, fileData: attachmentData, resourceId: Int(self.objConversation.employeeConversationId), strResourceType: "MessageAttachment", completion: {
                             (success, mobilePrimaryKey)  in
                             if success{
                                 DispatchQueue.main.async {
@@ -1979,17 +1969,17 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
             let tapLocation = tapGesture.location(in: self.tblMessage)
             if let tapIndexPath = self.tblMessage.indexPathForRow(at: tapLocation) {
                 let messageData = self.arrFinalMessages[tapIndexPath.section].arrMessage[tapIndexPath.row]
-                let objAttachmentViewVC = UIStoryboard(name: "Message", bundle: nil).instantiateViewController(withIdentifier: "AttachmentViewVC") as! AttachmentViewVC
+                let objMessageAttachmentViewVC = UIStoryboard(name: "Message", bundle: nil).instantiateViewController(withIdentifier: "MessageAttachmentViewVC") as! MessageAttachmentViewVC
                 if messageData.messageAttachment != ""{
                     if messageData.messageTypeId == MessageType.Image.rawValue {
                         if let image = MessageManager.shared.getImageFromDirectory(strFolderName: "\(DirectoryFolder.ChatAttachment.rawValue)/\(self.objConversation.conversationId)", strFileName: messageData.messageAttachment){
-                            objAttachmentViewVC.strAttachmentText = messageData.messageContent
-                            objAttachmentViewVC.attachmentData = image.jpegData(compressionQuality: 1.0)!
-                            objAttachmentViewVC.isDocumentAttachment = false
-                            objAttachmentViewVC.isPDFAttachment = false
-                            objAttachmentViewVC.strDocumentAttachmentTitle = "KeylblMessageAttachment".localize
-                            objAttachmentViewVC.modalPresentationStyle = .overCurrentContext
-                            self.present(objAttachmentViewVC, animated: false, completion: nil)
+                            objMessageAttachmentViewVC.strAttachmentText = messageData.messageContent
+                            objMessageAttachmentViewVC.attachmentData = image.jpegData(compressionQuality: 1.0)!
+                            objMessageAttachmentViewVC.isDocumentAttachment = false
+                            objMessageAttachmentViewVC.isPDFAttachment = false
+                            objMessageAttachmentViewVC.strDocumentAttachmentTitle = "KeylblMessageAttachment".localize
+                            objMessageAttachmentViewVC.modalPresentationStyle = .overCurrentContext
+                            self.present(objMessageAttachmentViewVC, animated: false, completion: nil)
                         }
                     }
                     else if messageData.messageTypeId == MessageType.Document.rawValue{
@@ -1998,12 +1988,12 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                             do {
                                 let attachmentData = try Data(contentsOf: fileURL)
                                 if attachmentData != nil{
-                                    objAttachmentViewVC.attachmentData = attachmentData
-                                    objAttachmentViewVC.isPDFAttachment = true
-                                    objAttachmentViewVC.isDocumentAttachment = false
-                                    objAttachmentViewVC.strDocumentAttachmentTitle = "KeylblMessageAttachment".localize
-                                    objAttachmentViewVC.modalPresentationStyle = .overCurrentContext
-                                    self.present(objAttachmentViewVC, animated: false, completion: nil)
+                                    objMessageAttachmentViewVC.attachmentData = attachmentData
+                                    objMessageAttachmentViewVC.isPDFAttachment = true
+                                    objMessageAttachmentViewVC.isDocumentAttachment = false
+                                    objMessageAttachmentViewVC.strDocumentAttachmentTitle = "KeylblMessageAttachment".localize
+                                    objMessageAttachmentViewVC.modalPresentationStyle = .overCurrentContext
+                                    self.present(objMessageAttachmentViewVC, animated: false, completion: nil)
                                 }
                             } catch {
                                 print("Unable to read the file")
@@ -2012,13 +2002,13 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                     }
                     else if messageData.messageTypeId == MessageType.Video.rawValue{
                         if messageData.messageAttachment != ""{
-                            let objAttachmentViewVC = UIStoryboard(name: "Message", bundle: nil).instantiateViewController(withIdentifier: "AttachmentViewVC") as! AttachmentViewVC
-                            objAttachmentViewVC.isDocumentAttachment = false
-                            objAttachmentViewVC.isPDFAttachment = false
-                            objAttachmentViewVC.isVideoAttachment = true
-                            objAttachmentViewVC.strFilePath = "\(MessageManager.shared.getDocumentDirPath())/\(DirectoryFolder.ChatAttachment.rawValue)/\(self.objConversation.conversationId)/\(messageData.messageAttachment)"
-                            objAttachmentViewVC.strDocumentAttachmentTitle = "KeylblMessageAttachment".localize
-                            self.navigationController?.pushWithAnimation(viewController: objAttachmentViewVC)
+                            let objMessageAttachmentViewVC = UIStoryboard(name: "Message", bundle: nil).instantiateViewController(withIdentifier: "MessageAttachmentViewVC") as! MessageAttachmentViewVC
+                            objMessageAttachmentViewVC.isDocumentAttachment = false
+                            objMessageAttachmentViewVC.isPDFAttachment = false
+                            objMessageAttachmentViewVC.isVideoAttachment = true
+                            objMessageAttachmentViewVC.strFilePath = "\(MessageManager.shared.getDocumentDirPath())/\(DirectoryFolder.ChatAttachment.rawValue)/\(self.objConversation.conversationId)/\(messageData.messageAttachment)"
+                            objMessageAttachmentViewVC.strDocumentAttachmentTitle = "KeylblMessageAttachment".localize
+                            self.navigationController?.pushWithAnimation(viewController: objMessageAttachmentViewVC)
                         }
                     }
                 }
@@ -2137,7 +2127,7 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
                 cell.downloadLoader.startAnimating()
             }
             
-            BHAzure.loadAttachmentDataFromAzure(containerName: "\(MessageManager.shared.timiroCode)/\(DirectoryFolder.Communication.rawValue)", strFileName: self.arrFinalMessages[sender.intSection].arrMessage[sender.intRow].messageAttachment) { success, error, data in
+            BMAzure.loadAttachmentDataFromAzure(containerName: "\(MessageManager.shared.timiroCode)/\(DirectoryFolder.Communication.rawValue)", strFileName: self.arrFinalMessages[sender.intSection].arrMessage[sender.intRow].messageAttachment) { success, error, data in
                 
                 self.arrFinalMessages[sender.intSection].arrMessage[sender.intRow].isDownloading = false
                 
@@ -2390,13 +2380,13 @@ extension MessageVC : UITableViewDelegate,UITableViewDataSource {
         self.view.endEditing(true)
         let messageData = self.arrFinalMessages[sender.intSection].arrMessage[sender.intRow]
         if messageData.messageAttachment != ""{
-            let objAttachmentViewVC = UIStoryboard(name: "Message", bundle: nil).instantiateViewController(withIdentifier: "AttachmentViewVC") as! AttachmentViewVC
-            objAttachmentViewVC.isDocumentAttachment = false
-            objAttachmentViewVC.isPDFAttachment = false
-            objAttachmentViewVC.isVideoAttachment = true
-            objAttachmentViewVC.strFilePath = "\(MessageManager.shared.getDocumentDirPath())/\(DirectoryFolder.ChatAttachment.rawValue)/\(self.objConversation.conversationId)/\(messageData.messageAttachment)"
-            objAttachmentViewVC.strDocumentAttachmentTitle = "KeylblMessageAttachment".localize
-            self.navigationController?.pushWithAnimation(viewController: objAttachmentViewVC)
+            let objMessageAttachmentViewVC = UIStoryboard(name: "Message", bundle: nil).instantiateViewController(withIdentifier: "MessageAttachmentViewVC") as! MessageAttachmentViewVC
+            objMessageAttachmentViewVC.isDocumentAttachment = false
+            objMessageAttachmentViewVC.isPDFAttachment = false
+            objMessageAttachmentViewVC.isVideoAttachment = true
+            objMessageAttachmentViewVC.strFilePath = "\(MessageManager.shared.getDocumentDirPath())/\(DirectoryFolder.ChatAttachment.rawValue)/\(self.objConversation.conversationId)/\(messageData.messageAttachment)"
+            objMessageAttachmentViewVC.strDocumentAttachmentTitle = "KeylblMessageAttachment".localize
+            self.navigationController?.pushWithAnimation(viewController: objMessageAttachmentViewVC)
         }
     }
     
@@ -3046,117 +3036,6 @@ extension UIScrollView {
 extension Array {
     func contains<T>(obj: T) -> Bool where T : Equatable {
         return self.filter({$0 as? T == obj}).count > 0
-    }
-}
-
-// MARK: 
-// MARK: SWIPE CELL DELEGATE METHOD
-extension MessageVC : MGSwipeTableCellDelegate {
-    func swipeTableCell(_ cell: MGSwipeTableCell, canSwipe direction: MGSwipeDirection, from point: CGPoint) -> Bool {
-        var intSection = -1
-        var intRow = -1
-        
-        if let cell = cell as? SenderTextCell {
-            intSection = cell.intSection
-            intRow = cell.intRow
-        }
-        else if let cell = cell as? SenderImageCell {
-            intSection = cell.intSection
-            intRow = cell.intRow
-        }
-        else if let cell = cell as? SenderAudioCell {
-            intSection = cell.intSection
-            intRow = cell.intRow
-        }
-        else if let cell = cell as? SenderDocCell {
-            intSection = cell.intSection
-            intRow = cell.intRow
-        }
-        
-        if intSection != -1 && intRow != -1{
-            if self.arrFinalMessages[intSection].arrMessage[intRow].senderEmployeeId == Int64(MessageManager.shared.employeeId){
-                return true //set true for delete message feature.
-            }
-            else{
-                return false
-            }
-        }
-        else{
-            return false
-        }
-    }
-    
-    func swipeTableCell(_ cell: MGSwipeTableCell, didChange state: MGSwipeState, gestureIsActive: Bool) {
-        
-    }
-    
-    func swipeTableCellWillEndSwiping(_ cell: MGSwipeTableCell) {
-        
-    }
-    
-    func swipeTableCellWillBeginSwiping(_ cell: MGSwipeTableCell) {
-        
-    }
-    
-    func swipeTableCell(_ cell: MGSwipeTableCell, swipeButtonsFor direction: MGSwipeDirection, swipeSettings: MGSwipeSettings, expansionSettings: MGSwipeExpansionSettings) -> [UIView]? {
-        swipeSettings.transition = MGSwipeTransition.clipCenter
-        expansionSettings.buttonIndex = 0
-        expansionSettings.fillOnTrigger = true
-        expansionSettings.triggerAnimation.easingFunction = .linear
-  
-        if direction == MGSwipeDirection.rightToLeft {
-            expansionSettings.expansionColor = MessageTheme.Color.clear
-            expansionSettings.threshold = 0.1
-        
-            let btnDelete = MGSwipeButton(title: "keyDelete".localize , icon: #imageLiteral(resourceName: "imgCancel") , backgroundColor: MessageTheme.Color.clear) { (cell) -> Bool in
-                MessageManager().delay(delay: 0.2) {
-                    var intSection = -1
-                    var intRow = -1
-                    
-                    if let cell = cell as? SenderTextCell {
-                        intSection = cell.intSection
-                        intRow = cell.intRow
-                    }
-                    else if let cell = cell as? SenderImageCell {
-                        intSection = cell.intSection
-                        intRow = cell.intRow
-                    }
-                    else if let cell = cell as? SenderAudioCell {
-                        intSection = cell.intSection
-                        intRow = cell.intRow
-                    }
-                    else if let cell = cell as? SenderDocCell {
-                        intSection = cell.intSection
-                        intRow = cell.intRow
-                    }
-                    
-                    if intSection != -1 && intRow != -1{
-                        _ = BHAlertVC.init(title:"", message: "keyDeleteMessageValidation".localize, rightButtonTitle: "keyOKUpperCase".localize, leftButtonTitle: "keyCancelUpperCase".localize) { success, actionType in
-                            if actionType == .right {
-                                
-                                MessageManager.shared.call_DeleteMessagesAPI(employeeConversationId: self.arrFinalMessages[intSection].arrMessage[intRow].employeeConversationId, conversationMessageId: self.arrFinalMessages[intSection].arrMessage[intRow].conversationMessageId, showLoader: true) { success in
-                                    if success{
-                                        self.arrFinalMessages[intSection].arrMessage[intRow].isDeleted = true
-                                        
-                                        _ = tblMessages().updateDeleteFlagForMessage(isDeleted: 1, employeeConversationId: self.arrFinalMessages[intSection].arrMessage[intRow].employeeConversationId, conversationMessageId: self.arrFinalMessages[intSection].arrMessage[intRow].conversationMessageId)
-                                        
-                                        let indexPath = IndexPath(row: intRow, section: intSection)
-                                        self.tblMessage.reloadRows(at: [indexPath], with: .none)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                return true
-            }
-            btnDelete.tag = 655
-            btnDelete.centerIconOverText(withSpacing: 10)
-            return [btnDelete]
-        }
-        else{
-            return []
-        }
     }
 }
 

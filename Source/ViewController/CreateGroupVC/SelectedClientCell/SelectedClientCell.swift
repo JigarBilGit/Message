@@ -12,7 +12,7 @@ import UIKit
 class SelectedClientCell: UICollectionViewCell {
     @IBOutlet weak var viewCellBG: UIView!
     @IBOutlet weak var viewUserName: UIView!
-    @IBOutlet weak var lblUserName: BHLabel!
+    @IBOutlet weak var lblUserName: BMLabel!
     @IBOutlet weak var btnDeleteClient: UIButton!
     
     override func awakeFromNib() {

@@ -46,6 +46,16 @@ Pod::Spec.new do |s|
   
     s.dependency 'Alamofire'
     s.dependency 'SDWebImage'
+    s.dependency 'AKImageCropperView'
+    s.dependency 'SwiftSignalRClient'
+    s.dependency 'SVProgressHUD'
+    s.dependency 'ReachabilitySwift'
+    s.dependency 'Zip'
+    s.dependency 'CropViewController'
+    s.dependency 'BSImagePicker'
+    s.dependency 'IQKeyboardManagerSwift'
+    s.dependency 'Connectivity'
+    s.dependency 'AZSClient'
+    s.dependency 'SnapKit'
     
-  
 end
