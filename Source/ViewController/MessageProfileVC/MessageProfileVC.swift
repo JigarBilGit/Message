@@ -8,7 +8,7 @@
 //
 
 import UIKit
-import SDWebImage
+//import SDWebImage
 import CropViewController
 
 enum ProfileType : String{
