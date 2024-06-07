@@ -3433,6 +3433,7 @@
 			isa = PBXGroup;
 			children = (
 				E21DBC222C11EFCE0014143D /* Assets.xcassets */,
+				2A493BD69C52251F81048EAEDB01DCD9 /* ViewController */,
 				E21DBC202C11EFB00014143D /* Storyboard */,
 				D989E97877760DA44064735C33931E50 /* AppCustomClass */,
 				0541C2A497130D102EA92CB4A9417C33 /* Constant */,
@@ -3443,7 +3444,6 @@
 				E7511451639476DB197DA03534D44A2E /* Pod */,
 				E40214142A49FFA1516C604A971B9E26 /* Support Files */,
 				361F963CB0EF6C3D970582B8BA01D40E /* ThirdParty */,
-				2A493BD69C52251F81048EAEDB01DCD9 /* ViewController */,
 			);
 			name = Communication;
 			path = ../..;
