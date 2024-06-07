@@ -21,19 +21,19 @@ Pod::Spec.new do |s|
 'Try to crate the library.'
                        DESC
 
-  s.homepage         = 'https://github.com/JigarPatel1991/Communication'
+  s.homepage         = 'https://github.com/JigarBilGit/Message'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'JigarPatel1991' => 'jigar.patel@billiyo.com' }
   s.source           = { :git => 'https://github.com/JigarBilGit/Message.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '13.0'
 
   s.source_files = 'Source/**/*.swift'
   s.swift_version = '5.0'
   s.platforms = {
-        "ios": "12.0"
+        "ios": "13.0"
   }
   
   # s.resource_bundles = {
@@ -44,18 +44,4 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   
-    s.dependency 'Alamofire'
-    s.dependency 'SDWebImage'
-    s.dependency 'AKImageCropperView'
-    s.dependency 'SwiftSignalRClient'
-    s.dependency 'SVProgressHUD'
-    s.dependency 'ReachabilitySwift'
-    s.dependency 'Zip'
-    s.dependency 'CropViewController'
-    s.dependency 'BSImagePicker'
-    s.dependency 'IQKeyboardManagerSwift'
-    s.dependency 'Connectivity'
-    s.dependency 'AZSClient'
-    s.dependency 'SnapKit'
-    
 end

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "Chat message module.",
   "description": "'Try to crate the library.'",
-  "homepage": "https://github.com/JigarPatel1991/Communication",
+  "homepage": "https://github.com/JigarBilGit/Message",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -16,50 +16,9 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "12.0"
+    "ios": "13.0"
   },
   "source_files": "Source/**/*.swift",
   "swift_versions": "5.0",
-  "dependencies": {
-    "Alamofire": [
-
-    ],
-    "SDWebImage": [
-
-    ],
-    "AKImageCropperView": [
-
-    ],
-    "SwiftSignalRClient": [
-
-    ],
-    "SVProgressHUD": [
-
-    ],
-    "ReachabilitySwift": [
-
-    ],
-    "Zip": [
-
-    ],
-    "CropViewController": [
-
-    ],
-    "BSImagePicker": [
-
-    ],
-    "IQKeyboardManagerSwift": [
-
-    ],
-    "Connectivity": [
-
-    ],
-    "AZSClient": [
-
-    ],
-    "SnapKit": [
-
-    ]
-  },
   "swift_version": "5.0"
 }
