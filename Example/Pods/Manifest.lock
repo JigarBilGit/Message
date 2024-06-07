@@ -1,15 +1,66 @@
 PODS:
-  - Communication (0.1.0)
+  - Alamofire (5.9.1)
+  - AZSClient (0.2.6)
+  - BSImagePicker (3.3.3)
+  - Communication (0.1.0):
+    - Alamofire
+    - AZSClient
+    - BSImagePicker (~> 3.1)
+    - Connectivity (~> 3.0)
+    - CropViewController
+    - IQKeyboardManagerSwift
+    - ReachabilitySwift
+    - SDWebImage
+    - SVProgressHUD
+    - SwiftSignalRClient
+    - Zip (~> 2.1)
+  - Connectivity (3.3.4)
+  - CropViewController (2.7.4)
+  - IQKeyboardManagerSwift (7.0.3)
+  - ReachabilitySwift (5.2.3)
+  - SDWebImage (5.19.2):
+    - SDWebImage/Core (= 5.19.2)
+  - SDWebImage/Core (5.19.2)
+  - SVProgressHUD (2.3.1):
+    - SVProgressHUD/Core (= 2.3.1)
+  - SVProgressHUD/Core (2.3.1)
+  - SwiftSignalRClient (1.1.0)
+  - Zip (2.1.2)
 
 DEPENDENCIES:
   - Communication (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AZSClient
+    - BSImagePicker
+    - Connectivity
+    - CropViewController
+    - IQKeyboardManagerSwift
+    - ReachabilitySwift
+    - SDWebImage
+    - SVProgressHUD
+    - SwiftSignalRClient
+    - Zip
 
 EXTERNAL SOURCES:
   Communication:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Communication: a247876b724b0e75aaea147d9547cdddffdda5cb
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  AZSClient: efd576cabf56f97e38cb1b614739f4b0c1906392
+  BSImagePicker: 57900b323f951711608acaf97d52e9183530cb6d
+  Communication: 439baf6dd1a4272f2aad22a4ec89df3713c0c7e7
+  Connectivity: 6494e28e023bc3c9d2a5d99775293d61a35d01da
+  CropViewController: 3489bbf95a3e11c654382b0bae08ac645cdf1b93
+  IQKeyboardManagerSwift: f9c5dc36cba16ddd2e51fa7d51c34a2e083029b5
+  ReachabilitySwift: 7f151ff156cea1481a8411701195ac6a984f4979
+  SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
+  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
+  SwiftSignalRClient: 2fa651ea18d47c5aaa135f0c8cf959239c845999
+  Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
 
 PODFILE CHECKSUM: beac02d6b93396c42a6e4c973347ed6f633eb410
 

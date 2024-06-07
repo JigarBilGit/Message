@@ -8,7 +8,7 @@
 //
 
 import UIKit
-//import AKImageCropperView
+import AKImageCropperView
 
 final class CropperViewController: UIViewController {
     

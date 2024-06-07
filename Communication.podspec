@@ -44,4 +44,17 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   
+  s.dependency 'Alamofire'
+  s.dependency 'SDWebImage'
+#  s.dependency 'AKImageCropperView'
+  s.dependency 'SwiftSignalRClient'
+  s.dependency 'SVProgressHUD'
+  s.dependency 'ReachabilitySwift'
+  s.dependency 'Zip', '~> 2.1'
+  s.dependency 'CropViewController'
+  s.dependency 'BSImagePicker', '~> 3.1'
+  s.dependency 'IQKeyboardManagerSwift'
+  s.dependency 'Connectivity', '~> 3.0'
+  s.dependency 'AZSClient'
+  
 end

@@ -20,5 +20,40 @@
   },
   "source_files": "Source/**/*.swift",
   "swift_versions": "5.0",
+  "dependencies": {
+    "Alamofire": [
+
+    ],
+    "SDWebImage": [
+
+    ],
+    "SwiftSignalRClient": [
+
+    ],
+    "SVProgressHUD": [
+
+    ],
+    "ReachabilitySwift": [
+
+    ],
+    "Zip": [
+      "~> 2.1"
+    ],
+    "CropViewController": [
+
+    ],
+    "BSImagePicker": [
+      "~> 3.1"
+    ],
+    "IQKeyboardManagerSwift": [
+
+    ],
+    "Connectivity": [
+      "~> 3.0"
+    ],
+    "AZSClient": [
+
+    ]
+  },
   "swift_version": "5.0"
 }
