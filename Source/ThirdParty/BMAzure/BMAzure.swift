@@ -8,7 +8,6 @@
 //
 
 import UIKit
-import AZSClient
 
 class BMAzure: NSObject {
     public class func loadDataFromAzure(clientSignature : String, completion: @escaping(_ success : Bool, _ error : NSError?, _ data: Data?) -> Void){
